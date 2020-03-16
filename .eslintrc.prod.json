@@ -1,0 +1,11 @@
+{
+    "extends": "../../.eslintrc.prod.json",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "project": "./tsconfig.prod.json"
+    }
+}
