@@ -1,5 +1,5 @@
 {
-    "extends": "../../.eslintrc.prod.json",
+    "extends": "./.eslintrc.prod.json",
     "parserOptions": {
         "project": "./tsconfig.json"
     }

@@ -1,3 +1,26 @@
 {
-    "extends": "../../tsconfig.prod.json"
+    "compilerOptions": {
+        "module": "esnext",
+        "lib": ["esnext"],
+        "target": "esnext",
+        "downlevelIteration": true,
+
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+
+        "sourceMap": true,
+        "moduleResolution": "node",
+
+        "jsx": "react",
+        "skipLibCheck": true,
+
+        "resolveJsonModule": true,
+
+        "allowSyntheticDefaultImports": true
+    },
+    "include": ["**/*.ts", "**/*.tsx"],
+    "exclude": ["node_modules"]
 }
