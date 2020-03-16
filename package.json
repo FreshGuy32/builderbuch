@@ -1,6 +1,30 @@
 {
-  "name": "build-scripts",
-  "version": "0.0.0",
-  "main": "index.js",
-  "license": "MIT"
+    "name": "build-scripts",
+    "version": "0.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "husky": "^4.2.3",
+        "lint-staged": "^10.0.8",
+        "prettier": "^1.19.1"
+    },
+    "scripts": {
+        "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
+        "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit packages/entry/src/declarations/assets.d.ts packages/entry/src/declarations/intl.d.ts packages/entry/src/declarations/shaka.d.ts",
+        "pretty": "prettier --write"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "yarn typecheck-ts",
+            "yarn lint-ts"
+        ],
+        "*.{ts,tsx,html,json}": [
+            "yarn pretty"
+        ]
+    }
 }
