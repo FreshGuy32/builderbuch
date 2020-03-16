@@ -17,6 +17,7 @@
         "typescript": "^3.8.3"
     },
     "scripts": {
+        "build": "babel src --extensions .ts,.tsx --out-dir dist --delete-dir-on-start",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit",
         "pretty": "prettier --write"
