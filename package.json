@@ -4,6 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.8.3",
         "@types/node": "^13.9.1",
         "@types/webpack": "^4.41.7",
         "@types/webpack-dev-server": "^3.10.1",
@@ -19,7 +20,7 @@
     "scripts": {
         "build": "babel src --extensions .ts,.tsx --out-dir dist --delete-dir-on-start",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
-        "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit",
+        "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit",
         "pretty": "prettier --write"
     },
     "husky": {

@@ -1,5 +1,5 @@
 import { Configuration } from 'webpack'
-import { resolve } from 'path'
+// import { resolve } from 'path'
 
 import { IConfigOptions } from './types'
 import { plugins } from './plugins'
@@ -24,10 +24,10 @@ export default (
             publicPath: '/',
         },
         devtool: 'eval-source-map',
-        entry: './src/index.tsx',
+        entry: 'D:\\Projects\\build-scripts\\test.ts',
         output: {
             filename: '[name].[hash].js',
-            path: resolve(__dirname, mode === 'production' ? 'dist' : 'build'),
+            path: 'D:\\Projects\\build-scripts\\build', //resolve(__dirname, mode === 'production' ? 'dist2' : 'build2'),
             publicPath: '/',
         },
         mode,

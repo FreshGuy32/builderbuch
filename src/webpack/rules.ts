@@ -7,7 +7,7 @@ export const rules = ({ mode }: IConfigOptions) => [
         use: {
             loader: 'babel-loader',
             options: {
-                extends: '../../.babelrc',
+                extends: '../.babelrc',
                 envName: mode,
             },
         },
