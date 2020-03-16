@@ -1,9 +1,9 @@
 import { Configuration } from 'webpack'
 import { resolve } from 'path'
 
-import { IConfigOptions } from './webpack/types'
-import { plugins } from './webpack/plugins'
-import { rules } from './webpack/rules'
+import { IConfigOptions } from './types'
+import { plugins } from './plugins'
+import { rules } from './rules'
 
 export default (
     _: unknown,
