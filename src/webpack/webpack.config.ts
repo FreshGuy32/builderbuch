@@ -1,16 +1,13 @@
 import { Configuration } from 'webpack'
-import { WebpackConfigArgs } from '..'
 import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
+import { WebpackConfigArgs } from '../helper/parsedArgs'
 
 export default (args: WebpackConfigArgs) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
         args.environment
-    console.log(
-        resolve(args.basePath, args.entry),
-        resolve(args.basePath, args.output)
-    )
+
     const config: Configuration = {
         devServer: {
             historyApiFallback: true,

@@ -1,6 +1,6 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { Plugin, EnvironmentPlugin } from 'webpack'
-import { WebpackConfigArgs } from '..'
+import { WebpackConfigArgs } from '../helper/parsedArgs'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 

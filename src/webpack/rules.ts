@@ -1,4 +1,4 @@
-import { WebpackConfigArgs } from '..'
+import { WebpackConfigArgs } from '../helper/parsedArgs'
 import { resolve } from 'path'
 
 export const rules = (args: WebpackConfigArgs) => [

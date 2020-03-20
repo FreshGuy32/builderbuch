@@ -1,9 +1,7 @@
-import webpack from 'webpack'
-import createConfig from './webpack/webpack.config'
-
 import yargs from 'yargs'
+import webpack from 'webpack'
 
-const { argv } = yargs.options({
+export const { argv } = yargs.options({
     entry: { type: 'string', default: 'src/index.ts', alias: 'e' },
     output: { type: 'string', default: 'dist', alias: 'o' },
     analyze: { type: 'boolean', default: false, alias: 'a' },
@@ -16,14 +14,10 @@ const { argv } = yargs.options({
             'none'
         >[],
     },
-})
 
+    watch: { type: 'boolean', default: false, alias: 'w' },
+})
 export type WebpackConfigArgs = Pick<
     typeof argv,
     'entry' | 'output' | 'analyze' | 'mode' | 'environment' | 'basePath'
 >
-
-const compiler = webpack(createConfig(argv))
-
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-compiler.run(() => {})
