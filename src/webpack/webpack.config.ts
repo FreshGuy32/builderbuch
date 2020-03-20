@@ -1,20 +1,16 @@
 import { Configuration } from 'webpack'
-// import { resolve } from 'path'
-
-import { IConfigOptions } from './types'
-import { plugins } from './plugins'
+import { WebpackConfigArgs } from '..'
 import { rules } from './rules'
+import { plugins } from './plugins'
+import { resolve } from 'path'
 
-export default (
-    _: unknown,
-    {
-        a = false,
-        environment = 'local',
-        mode = 'development',
-    }: Partial<IConfigOptions>
-) => {
-    process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV = mode
-
+export default (args: WebpackConfigArgs) => {
+    process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
+        args.environment
+    console.log(
+        resolve(args.basePath, args.entry),
+        resolve(args.basePath, args.output)
+    )
     const config: Configuration = {
         devServer: {
             historyApiFallback: true,
@@ -24,21 +20,18 @@ export default (
             publicPath: '/',
         },
         devtool: 'eval-source-map',
-        entry: 'D:\\Projects\\build-scripts\\test.ts',
+        entry: resolve(args.basePath, args.entry),
         output: {
             filename: '[name].[hash].js',
-            path: 'D:\\Projects\\build-scripts\\build', //resolve(__dirname, mode === 'production' ? 'dist2' : 'build2'),
+            path: resolve(args.basePath, args.output),
             publicPath: '/',
         },
-        mode,
+        mode: args.mode,
         module: {
-            rules: rules({ a, environment, mode }),
+            rules: rules(args),
         },
-        plugins: plugins(__dirname, { a, environment, mode }),
+        plugins: plugins(args),
         resolve: {
-            alias: {
-                snapsvg: 'snapsvg/dist/snap.svg.js',
-            },
             extensions: ['.tsx', '.ts', '.js', '.css', '.pcss'],
         },
     }

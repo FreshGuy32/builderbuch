@@ -1,21 +1,22 @@
-import { IConfigOptions } from './types'
+import { WebpackConfigArgs } from '..'
+import { resolve } from 'path'
 
-export const rules = ({ mode }: IConfigOptions) => [
+export const rules = (args: WebpackConfigArgs) => [
     {
         test: /\.(js|ts)x?$/i,
         exclude: /node_modules/,
         use: {
             loader: 'babel-loader',
             options: {
-                extends: '../.babelrc',
-                envName: mode,
+                extends: resolve(args.basePath, '.babelrc'),
+                envName: args.environment,
             },
         },
     },
-    // {
-    //     test: /\.css$/i,
-    //     use: ['style-loader', 'css-loader'],
-    // },
+    {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+    },
     // {
     //     test: /\.svg$/,
     //     use: [
