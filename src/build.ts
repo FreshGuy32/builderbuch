@@ -4,38 +4,24 @@ import { argv } from './helper/parsedArgs'
 
 const compiler = webpack(createConfig(argv))
 
-const promise = argv.watch
-    ? new Promise(resolve => {
-          // eslint-disable-next-line @typescript-eslint/no-empty-function
-          const watcher = compiler.watch(
-              { aggregateTimeout: 300 },
-              (_, stats) => console.log(stats.toString({ colors: true }))
-          )
+new Promise(resolve => {
+    if (argv.watch) {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const watcher = compiler.watch({ aggregateTimeout: 300 }, (_, stats) =>
+            console.log(stats.toString({ colors: true }))
+        )
 
-          process.on('SIGINT', function() {
-              watcher.close(() => {
-                  watcher.close(() => {
-                      process.exit()
-                      resolve()
-                  })
-              })
-          })
-      })
-    : new Promise(resolve =>
-          compiler.run((_, stats) => {
-              console.log(stats.toString({ colors: true }))
-              resolve()
-          })
-      )
-
-promise.then()
-// } else {
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-// const watcher = compiler.watch({ aggregateTimeout: 300 }, (_, stats) =>
-//     console.log(stats.toString({ colors: true }))
-// )
-
-// process.on('SIGINT', function() {
-//     watcher.close(() => process.exit())
-// })
-// }
+        process.on('SIGINT', function() {
+            watcher.close(() => {
+                watcher.close(() => {
+                    resolve(process.exit())
+                })
+            })
+        })
+    } else {
+        compiler.run((_, stats) => {
+            console.log(stats.toString({ colors: true }))
+            resolve()
+        })
+    }
+}).then()
