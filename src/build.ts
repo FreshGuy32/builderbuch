@@ -10,9 +10,7 @@ import { createCompiler } from './helper/createCompiler'
 
             process.on('SIGINT', () => {
                 watcher.close(() => {
-                    watcher.close(() => {
-                        resolve(process.exit())
-                    })
+                    resolve(process.exit())
                 })
             })
         } else {
