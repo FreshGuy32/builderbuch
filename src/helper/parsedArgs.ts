@@ -1,18 +1,23 @@
 import yargs from 'yargs'
 import webpack from 'webpack'
 
+type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
+
 export const { argv } = yargs.options({
     entry: { type: 'string', default: 'src/index.ts', alias: 'e' },
     output: { type: 'string', default: 'dist', alias: 'o' },
     analyze: { type: 'boolean', default: false, alias: 'a' },
 
-    environment: { choices: ['prod', 'stg', 'dev'] as const, default: 'stg' },
+    environment: {
+        type: 'string',
+        choices: ['prod', 'stg', 'dev'] as const,
+        default: 'stg',
+    },
     basePath: { type: 'string', default: process.cwd() },
     mode: {
-        choices: ['development', 'production'] as Exclude<
-            webpack.Configuration['mode'],
-            'none'
-        >[],
+        type: 'string',
+        choices: ['development', 'production'] as Mode[],
+        default: 'development' as Mode,
     },
 
     watch: { type: 'boolean', default: false, alias: 'w' },
