@@ -3,6 +3,7 @@ import createConfig from './webpack/webpack.config'
 import { argv } from './helper/parsedArgs'
 import { findClosestPackageFile } from './helper/findClosestPackageFile'
 import { readFile } from 'fs-extra'
+import clearConsole from 'react-dev-utils/clearConsole'
 ;(async () => {
     let publicPath = '/'
 
@@ -21,10 +22,10 @@ import { readFile } from 'fs-extra'
 
     await new Promise(resolve => {
         if (argv.watch) {
-            const watcher = compiler.watch(
-                { aggregateTimeout: 300 },
-                (_, stats) => console.log(stats.toString({ colors: true }))
-            )
+            const watcher = compiler.watch({}, (_, stats) => {
+                clearConsole()
+                console.log(stats.toString({ colors: true }))
+            })
 
             process.on('SIGINT', () => {
                 watcher.close(() => {
