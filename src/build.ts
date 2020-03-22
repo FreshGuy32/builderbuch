@@ -21,13 +21,12 @@ import { readFile } from 'fs-extra'
 
     await new Promise(resolve => {
         if (argv.watch) {
-            // eslint-disable-next-line @typescript-eslint/no-empty-function
             const watcher = compiler.watch(
                 { aggregateTimeout: 300 },
                 (_, stats) => console.log(stats.toString({ colors: true }))
             )
 
-            process.on('SIGINT', function () {
+            process.on('SIGINT', () => {
                 watcher.close(() => {
                     watcher.close(() => {
                         resolve(process.exit())
