@@ -3,8 +3,9 @@ import { createCompiler } from './helper/createCompiler'
 import WebpackDevServer from 'webpack-dev-server'
 import { choosePort } from 'react-dev-utils/WebpackDevServerUtils'
 import { onSigint } from './helper/onSigint'
+import { startArgv } from './helper/parsedArgsStart'
 ;(async () => {
-    const compiler = await createCompiler()
+    const compiler = await createCompiler(startArgv)
     const port = await choosePort('', 3000)
     if (!port) {
         return console.error('No suitable port found!')

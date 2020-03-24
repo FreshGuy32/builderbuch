@@ -11,7 +11,7 @@ const { argv } = yargs.options({
 export const buildArgv = { ...argv, type: 'build' } as const
 
 export type WebpackBuildConfigArgs = Pick<
-    typeof buildArgv,
+    typeof argv,
     | 'entry'
     | 'output'
     | 'analyze'

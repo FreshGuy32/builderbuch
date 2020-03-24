@@ -3,9 +3,12 @@ import createConfig from '../webpack/webpack.config'
 import { findClosestPackageFile } from '../helper/findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { buildArgv } from './parsedArgsBuild'
+import { WebpackBuildConfigArgs } from './parsedArgsBuild'
+import { WebpackStartConfigArgs } from './parsedArgsStart'
 
-export const createCompiler = async () => {
+export const createCompiler = async (
+    args: WebpackBuildConfigArgs | WebpackStartConfigArgs
+) => {
     let publicPath = '/'
 
     const closestPackageJsonPath = await findClosestPackageFile(process.cwd())
@@ -19,12 +22,12 @@ export const createCompiler = async () => {
         }
     }
 
-    const compiler = webpack(createConfig({ ...buildArgv, publicPath }))
-    compiler.hooks.invalid.tap('invalid', function () {
+    const compiler = webpack(createConfig({ ...args, publicPath }))
+    compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')
     })
 
-    compiler.hooks.done.tap('done', function (stats) {
+    compiler.hooks.done.tap('done', stats => {
         const rawMessages = stats.toJson({}, true)
         const messages = formatWebpackMessages(rawMessages)
         if (!messages.errors.length && !messages.warnings.length) {

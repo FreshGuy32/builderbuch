@@ -1,12 +1,12 @@
-import { argv } from './helper/parsedArgsBuild'
+import { buildArgv } from './helper/parsedArgsBuild'
 import clearConsole from 'react-dev-utils/clearConsole'
 import { createCompiler } from './helper/createCompiler'
 import { onSigint } from './helper/onSigint'
 ;(async () => {
-    const compiler = await createCompiler()
+    const compiler = await createCompiler(buildArgv)
 
     return new Promise(resolve => {
-        if (argv.watch) {
+        if (buildArgv.watch) {
             const watcher = compiler.watch({}, er => {
                 if (er) {
                     return console.log(er)
