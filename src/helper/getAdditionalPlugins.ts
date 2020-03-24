@@ -1,18 +1,5 @@
 import { PossibleArguments } from '../types'
-
-interface IPluginModule {
-    default: (args: PossibleArguments) => void
-}
-
-const moduleIsCorrect = (
-    moduleToCheck: unknown
-): moduleToCheck is IPluginModule =>
-    !!(
-        typeof moduleToCheck === 'object' &&
-        moduleToCheck &&
-        'default' in moduleToCheck &&
-        typeof (moduleToCheck as { default: unknown }).default === 'function'
-    )
+import { moduleIsCorrect } from './moduleIsCorrect'
 
 export const getAdditionalPlugins = async (args: PossibleArguments) => {
     const path = ''
