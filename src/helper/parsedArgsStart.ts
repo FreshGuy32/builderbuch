@@ -1,10 +1,12 @@
 import yargs from 'yargs'
 import { argsCommon } from './argsCommon'
 
-export const { argv: startArgv } = yargs.options({
+const { argv } = yargs.options({
     ...argsCommon,
 })
+
+export const startArgv = { ...argv, type: 'start' } as const
 export type WebpackStartConfigArgs = Pick<
     typeof startArgv,
-    'entry' | 'output' | 'analyze' | 'mode' | 'environment' | 'basePath'
+    'entry' | 'output' | 'mode' | 'environment' | 'basePath' | 'type'
 >

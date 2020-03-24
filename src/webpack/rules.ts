@@ -1,7 +1,10 @@
 import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
 import { resolve } from 'path'
+import { WebpackStartConfigArgs } from '../helper/parsedArgsStart'
 
-export const rules = (args: WebpackBuildConfigArgs) => [
+export const rules = (
+    args: WebpackBuildConfigArgs | WebpackStartConfigArgs
+) => [
     {
         test: /\.(js|ts)x?$/i,
         exclude: /node_modules/,
@@ -17,16 +20,4 @@ export const rules = (args: WebpackBuildConfigArgs) => [
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
     },
-    // {
-    //     test: /\.svg$/,
-    //     use: [
-    //         {
-    //             loader: '@svgr/webpack',
-    //             options: {
-    //                 svgo: true,
-    //             },
-    //         },
-    //         'file-loader',
-    //     ],
-    // },
 ]

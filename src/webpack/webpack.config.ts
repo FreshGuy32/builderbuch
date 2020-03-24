@@ -3,8 +3,13 @@ import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
 import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
+import { WebpackStartConfigArgs } from '../helper/parsedArgsStart'
 
-export default (args: WebpackBuildConfigArgs & { publicPath: string }) => {
+export default (
+    args: (WebpackBuildConfigArgs | WebpackStartConfigArgs) & {
+        publicPath: string
+    }
+) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
         args.environment
 

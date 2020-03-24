@@ -18,6 +18,7 @@ export const createCompiler = async () => {
             publicPath = jsonContent.homepage
         }
     }
+
     const compiler = webpack(createConfig({ ...buildArgv, publicPath }))
     compiler.hooks.invalid.tap('invalid', function () {
         console.log('Compiling...')

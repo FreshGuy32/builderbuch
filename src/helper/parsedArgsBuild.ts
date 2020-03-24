@@ -1,14 +1,22 @@
 import yargs from 'yargs'
 import { argsCommon } from './argsCommon'
 
-export const { argv: buildArgv } = yargs.options({
+const { argv } = yargs.options({
     ...argsCommon,
 
     analyze: { type: 'boolean', default: false, alias: 'a' },
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
+export const buildArgv = { ...argv, type: 'build' } as const
+
 export type WebpackBuildConfigArgs = Pick<
     typeof buildArgv,
-    'entry' | 'output' | 'analyze' | 'mode' | 'environment' | 'basePath'
+    | 'entry'
+    | 'output'
+    | 'analyze'
+    | 'mode'
+    | 'environment'
+    | 'basePath'
+    | 'type'
 >
