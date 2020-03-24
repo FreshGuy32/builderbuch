@@ -1,28 +1,14 @@
 import yargs from 'yargs'
-import webpack from 'webpack'
+import { argsCommon } from './argsCommon'
 
-type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
+export const { argv: buildArgv } = yargs.options({
+    ...argsCommon,
 
-export const { argv } = yargs.options({
-    entry: { type: 'string', default: 'src/index.ts', alias: 'e' },
-    output: { type: 'string', default: 'dist', alias: 'o' },
     analyze: { type: 'boolean', default: false, alias: 'a' },
-
-    environment: {
-        type: 'string',
-        choices: ['prod', 'stg', 'dev'] as const,
-        default: 'stg',
-    },
-    basePath: { type: 'string', default: process.cwd() },
-    mode: {
-        type: 'string',
-        choices: ['development', 'production'] as Mode[],
-        default: 'development' as Mode,
-    },
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
 export type WebpackBuildConfigArgs = Pick<
-    typeof argv,
+    typeof buildArgv,
     'entry' | 'output' | 'analyze' | 'mode' | 'environment' | 'basePath'
 >

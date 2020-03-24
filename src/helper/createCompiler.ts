@@ -3,7 +3,7 @@ import createConfig from '../webpack/webpack.config'
 import { findClosestPackageFile } from '../helper/findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { argv } from './parsedArgsBuild'
+import { buildArgv } from './parsedArgsBuild'
 
 export const createCompiler = async () => {
     let publicPath = '/'
@@ -18,7 +18,7 @@ export const createCompiler = async () => {
             publicPath = jsonContent.homepage
         }
     }
-    const compiler = webpack(createConfig({ ...argv, publicPath }))
+    const compiler = webpack(createConfig({ ...buildArgv, publicPath }))
     compiler.hooks.invalid.tap('invalid', function () {
         console.log('Compiling...')
     })
