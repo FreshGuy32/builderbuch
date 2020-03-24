@@ -3,7 +3,7 @@ import createConfig from '../webpack/webpack.config'
 import { findClosestPackageFile } from '../helper/findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { argv } from '../helper/parsedArgs'
+import { argv } from './parsedArgsBuild'
 
 export const createCompiler = async () => {
     let publicPath = '/'

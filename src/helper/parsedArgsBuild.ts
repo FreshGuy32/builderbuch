@@ -22,7 +22,7 @@ export const { argv } = yargs.options({
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
-export type WebpackConfigArgs = Pick<
+export type WebpackBuildConfigArgs = Pick<
     typeof argv,
     'entry' | 'output' | 'analyze' | 'mode' | 'environment' | 'basePath'
 >

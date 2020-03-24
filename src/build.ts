@@ -1,4 +1,4 @@
-import { argv } from './helper/parsedArgs'
+import { argv } from './helper/parsedArgsBuild'
 import clearConsole from 'react-dev-utils/clearConsole'
 import { createCompiler } from './helper/createCompiler'
 import { onSigint } from './helper/onSigint'

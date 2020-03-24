@@ -1,7 +1,7 @@
-import { WebpackConfigArgs } from '../helper/parsedArgs'
+import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
 import { resolve } from 'path'
 
-export const rules = (args: WebpackConfigArgs) => [
+export const rules = (args: WebpackBuildConfigArgs) => [
     {
         test: /\.(js|ts)x?$/i,
         exclude: /node_modules/,

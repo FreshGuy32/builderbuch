@@ -2,9 +2,9 @@ import { Configuration } from 'webpack'
 import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
-import { WebpackConfigArgs } from '../helper/parsedArgs'
+import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
 
-export default (args: WebpackConfigArgs & { publicPath: string }) => {
+export default (args: WebpackBuildConfigArgs & { publicPath: string }) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
         args.environment
 
