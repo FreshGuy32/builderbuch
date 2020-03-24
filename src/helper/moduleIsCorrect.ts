@@ -1,11 +1,11 @@
 import { PossibleArguments } from '../types'
 
-interface IPluginModule {
-    default: (args: PossibleArguments) => void
+interface IPluginModule<T extends 'plugins' | 'rules'> {
+    default: (args: PossibleArguments) => T extends 'plugins' ? [] : {}
 }
-export const moduleIsCorrect = (
+export const moduleIsCorrect = <T extends 'plugins' | 'rules'>(
     moduleToCheck: unknown
-): moduleToCheck is IPluginModule =>
+): moduleToCheck is IPluginModule<T> =>
     !!(
         typeof moduleToCheck === 'object' &&
         moduleToCheck &&

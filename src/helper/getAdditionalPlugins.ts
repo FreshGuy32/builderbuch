@@ -5,7 +5,7 @@ export const getAdditionalPlugins = async (args: PossibleArguments) => {
     const path = ''
     const additionalPluginModule = (await import(path)) as unknown
 
-    if (!moduleIsCorrect(additionalPluginModule)) {
+    if (!moduleIsCorrect<'plugins'>(additionalPluginModule)) {
         return
     }
 
