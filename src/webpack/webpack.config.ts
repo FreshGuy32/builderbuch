@@ -9,13 +9,6 @@ export default (args: WebpackConfigArgs & { publicPath: string }) => {
         args.environment
 
     const config: Configuration = {
-        devServer: {
-            historyApiFallback: true,
-            hot: true,
-            open: true,
-            port: 3000,
-            publicPath: '/',
-        },
         devtool: 'eval-source-map',
         entry: resolve(args.basePath, args.entry),
         output: {
