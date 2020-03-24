@@ -1,10 +1,7 @@
-import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
 import { resolve } from 'path'
-import { WebpackStartConfigArgs } from '../helper/parsedArgsStart'
+import { PossibleArguments } from '../types'
 
-export const rules = (
-    args: WebpackBuildConfigArgs | WebpackStartConfigArgs
-) => [
+export const rules = (args: PossibleArguments) => [
     {
         test: /\.(js|ts)x?$/i,
         exclude: /node_modules/,

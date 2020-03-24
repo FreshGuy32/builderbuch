@@ -1,13 +1,10 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { Plugin, EnvironmentPlugin } from 'webpack'
-import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import { WebpackStartConfigArgs } from '../helper/parsedArgsStart'
+import { PossibleArguments } from '../types'
 
-export const plugins = (
-    args: WebpackBuildConfigArgs | WebpackStartConfigArgs
-): Plugin[] => {
+export const plugins = (args: PossibleArguments): Plugin[] => {
     const environmentPlugin = new EnvironmentPlugin({
         mode: args.mode,
         environment: args.environment,

@@ -2,11 +2,10 @@ import { Configuration } from 'webpack'
 import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
-import { WebpackBuildConfigArgs } from '../helper/parsedArgsBuild'
-import { WebpackStartConfigArgs } from '../helper/parsedArgsStart'
+import { PossibleArguments } from '../types'
 
 export default (
-    args: (WebpackBuildConfigArgs | WebpackStartConfigArgs) & {
+    args: PossibleArguments & {
         publicPath: string
     }
 ) => {
