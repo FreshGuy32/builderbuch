@@ -19,7 +19,7 @@ export const createCompiler = async (args: PossibleArguments) => {
         }
     }
 
-    const compiler = webpack(createConfig({ ...args, publicPath }))
+    const compiler = webpack(await createConfig({ ...args, publicPath }))
     compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')
     })

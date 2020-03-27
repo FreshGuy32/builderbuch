@@ -4,7 +4,7 @@ import { plugins } from './plugins'
 import { resolve } from 'path'
 import { PossibleArguments } from '../types'
 
-export default (
+export default async (
     args: PossibleArguments & {
         publicPath: string
     }
@@ -24,7 +24,7 @@ export default (
         module: {
             rules: rules(args),
         },
-        plugins: plugins(args),
+        plugins: await plugins(args),
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.css', '.pcss'],
         },

@@ -3,8 +3,11 @@ import { Plugin, EnvironmentPlugin } from 'webpack'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { PossibleArguments } from '../types'
+import { getAdditionalPlugins } from '../helper/getAdditionalPlugins'
 
-export const plugins = (args: PossibleArguments): Plugin[] => {
+export const plugins = async (args: PossibleArguments) => {
+    const additionalPlugins = (await getAdditionalPlugins(args)) ?? []
+
     const environmentPlugin = new EnvironmentPlugin({
         mode: args.mode,
         environment: args.environment,
@@ -18,7 +21,11 @@ export const plugins = (args: PossibleArguments): Plugin[] => {
         },
     }) as Plugin
 
-    const plugins: Plugin[] = [environmentPlugin, forkTsCheckerPlugin]
+    const plugins: Plugin[] = [
+        environmentPlugin,
+        forkTsCheckerPlugin,
+        ...additionalPlugins,
+    ]
 
     if (args.type === 'build' && args.analyze) {
         plugins.push(

@@ -29,6 +29,7 @@
         "@types/yargs": "^15.0.4",
         "@typescript-eslint/eslint-plugin": "^2.24.0",
         "@typescript-eslint/parser": "^2.24.0",
+        "babel-plugin-dynamic-import-node": "^2.3.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.0",
         "husky": "^4.2.3",
@@ -37,7 +38,7 @@
         "typescript": "^3.8.3"
     },
     "scripts": {
-        "build": "babel src --extensions .ts,.tsx --out-dir dist --delete-dir-on-start",
+        "build": "babel src --extensions .ts,.tsx --out-dir dist --delete-dir-on-start --source-maps",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit",
         "pretty": "prettier --write"

@@ -11,6 +11,8 @@ export const argsCommon = {
     },
     output: { type: 'string', default: 'dist' as string, alias: 'o' },
 
+    plugins: { type: 'string', default: 'plugins.js' as string },
+
     environment: {
         type: 'string',
         choices: ['prod', 'stg', 'dev'] as Environments[],
