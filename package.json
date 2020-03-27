@@ -3,6 +3,10 @@
     "version": "0.0.0",
     "main": "index.js",
     "license": "MIT",
+    "bin": {
+        "build": "./dist/build.js",
+        "start": "./dist/start.js"
+    },
     "dependencies": {
         "@babel/cli": "^7.8.4",
         "@babel/core": "^7.9.0",
