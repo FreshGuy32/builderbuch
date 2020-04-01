@@ -1,11 +1,11 @@
 {
-    "name": "build-scripts",
+    "name": "web-build-scripts",
     "version": "0.0.0",
     "main": "index.js",
     "license": "MIT",
     "bin": {
-        "build": "./dist/build.js",
-        "start": "./dist/start.js"
+        "web-build": "./bin/build.js",
+        "web-start": "./bin/start.js"
     },
     "dependencies": {
         "@babel/cli": "^7.8.4",
