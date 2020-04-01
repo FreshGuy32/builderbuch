@@ -67,3 +67,4 @@ node_modules/
 *.js
 /dist
 /build
+!/bin/*.js
