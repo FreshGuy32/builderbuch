@@ -1,7 +1,34 @@
 {
-    "extends": "./tsconfig.prod.json",
     "compilerOptions": {
-        "noUnusedLocals": false,
-        "noUnusedParameters": false
-    }
+        "rootDir": "src",
+        "outDir": "dist",
+
+        "declaration": true,
+
+        "module": "CommonJS",
+        "lib": ["esnext"],
+        "target": "ES2015",
+        "downlevelIteration": true,
+
+        "strict": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+
+        "sourceMap": true,
+        "moduleResolution": "node",
+
+        "jsx": "react",
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+
+        "resolveJsonModule": true,
+
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+
+        "noEmit": true
+    },
+    "exclude": ["node_modules"]
 }
