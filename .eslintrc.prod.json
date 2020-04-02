@@ -35,6 +35,6 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "project": "./tsconfig.prod.json"
+        "project": "./tsconfig.json"
     }
 }

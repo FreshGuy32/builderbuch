@@ -4,6 +4,7 @@ import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { PossibleArguments } from '../types'
 import { getAdditionalPlugins } from '../helper/getAdditionalPlugins'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export const plugins = async (args: PossibleArguments) => {
     const additionalPlugins = (await getAdditionalPlugins(args)) ?? []
@@ -26,6 +27,12 @@ export const plugins = async (args: PossibleArguments) => {
         forkTsCheckerPlugin,
         ...additionalPlugins,
     ]
+    if (
+        args.type === 'start' &&
+        !additionalPlugins.some(plugin => plugin instanceof HtmlWebpackPlugin)
+    ) {
+        plugins.push(new HtmlWebpackPlugin())
+    }
 
     if (args.type === 'build' && args.analyze) {
         plugins.push(

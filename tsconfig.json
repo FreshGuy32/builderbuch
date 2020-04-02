@@ -26,9 +26,9 @@
         "resolveJsonModule": true,
 
         "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
+        "esModuleInterop": true
 
-        "noEmit": true
+        // "noEmit": true
     },
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "dist"]
 }

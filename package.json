@@ -16,6 +16,7 @@
         "babel-loader": "^8.1.0",
         "fork-ts-checker-webpack-plugin": "^4.1.0",
         "fs-extra": "^9.0.0",
+        "html-webpack-plugin": "^4.0.4",
         "react-dev-utils": "^10.2.1",
         "webpack": "^4.42.0",
         "webpack-bundle-analyzer": "^3.6.1",
@@ -25,6 +26,7 @@
     "devDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.9.0",
         "@types/fs-extra": "^8.1.0",
+        "@types/html-webpack-plugin": "^3.2.2",
         "@types/node": "^13.9.2",
         "@types/react-dev-utils": "^9.0.4",
         "@types/webpack": "^4.41.8",
@@ -34,6 +36,7 @@
         "@typescript-eslint/eslint-plugin": "^2.24.0",
         "@typescript-eslint/parser": "^2.24.0",
         "babel-plugin-dynamic-import-node": "^2.3.0",
+        "concurrently": "^5.1.0",
         "eslint": "^6.8.0",
         "eslint-config-prettier": "^6.10.0",
         "husky": "^4.2.3",
@@ -43,9 +46,7 @@
         "typescript": "^3.8.3"
     },
     "scripts": {
-        "build": "rimraf dist && concurrently \"npm:build-*\"",
-        "build-js": "babel src --extensions .ts,.tsx --out-dir dist --source-maps",
-        "build-types": "tsc --project ./tsconfig.json",
+        "build": "tsc --project ./tsconfig.json",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "typecheck-ts": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck --noEmit",
         "pretty": "prettier --write"
