@@ -25,20 +25,26 @@ export const plugins = async (args: PossibleArguments) => {
     const plugins: Plugin[] = [
         environmentPlugin,
         forkTsCheckerPlugin,
-        ...additionalPlugins,
+        ...additionalPlugins.filter(
+            (plugin): plugin is Plugin => plugin instanceof Plugin
+        ),
     ]
     if (
         args.type === 'start' &&
-        !additionalPlugins.some(plugin => plugin instanceof HtmlWebpackPlugin)
+        !additionalPlugins.some(
+            plugin =>
+                !(plugin instanceof Plugin) &&
+                plugin.name === 'HtmlWebpackPlugin'
+        )
     ) {
-        plugins.push(new HtmlWebpackPlugin())
+        plugins.push(new HtmlWebpackPlugin() as Plugin)
     }
 
     if (args.type === 'build' && args.analyze) {
         plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
-            })
+            }) as Plugin
         )
     }
 

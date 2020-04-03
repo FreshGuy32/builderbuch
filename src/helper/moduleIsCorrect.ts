@@ -1,8 +1,7 @@
-import { PossibleArguments } from '../types'
-import { Plugin } from 'webpack'
+import { AdditionalPlugins, AdditionalRules } from '../types'
 
 interface IPluginModule<T extends 'plugins' | 'rules'> {
-    default: (args: PossibleArguments) => T extends 'plugins' ? Plugin[] : {}
+    default: T extends 'plugins' ? AdditionalPlugins : AdditionalRules
 }
 export const moduleIsCorrect = <T extends 'plugins' | 'rules'>(
     moduleToCheck: unknown
