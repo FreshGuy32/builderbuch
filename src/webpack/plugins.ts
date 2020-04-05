@@ -2,7 +2,7 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { Plugin, EnvironmentPlugin } from 'webpack'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import { PossibleArguments } from '../types'
+import { PossibleArguments, PluginAdditon, PluginOverride } from '../types'
 import { getAdditionalPlugins } from '../helper/getAdditionalPlugins'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
@@ -22,22 +22,28 @@ export const plugins = async (args: PossibleArguments) => {
         },
     }) as Plugin
 
+    const additions = additionalPlugins
+        .filter((plugin): plugin is PluginAdditon => plugin.type === 'addition')
+        .map(({ plugin }) => plugin)
     const plugins: Plugin[] = [
         environmentPlugin,
         forkTsCheckerPlugin,
-        ...additionalPlugins.filter(
-            (plugin): plugin is Plugin => plugin instanceof Plugin
-        ),
+        ...additions,
     ]
-    if (
-        args.type === 'start' &&
-        !additionalPlugins.some(
-            plugin =>
-                !(plugin instanceof Plugin) &&
-                plugin.name === 'HtmlWebpackPlugin'
+
+    const overrides = additionalPlugins.filter(
+        (plugin): plugin is PluginOverride => plugin.type === 'override'
+    )
+
+    if (args.type === 'start') {
+        const htmlWebpackPlugin = overrides.find(
+            plugin => plugin.name === 'HtmlWebpackPlugin'
         )
-    ) {
-        plugins.push(new HtmlWebpackPlugin() as Plugin)
+        plugins.push(
+            !htmlWebpackPlugin
+                ? (new HtmlWebpackPlugin() as Plugin)
+                : htmlWebpackPlugin.plugin
+        )
     }
 
     if (args.type === 'build' && args.analyze) {

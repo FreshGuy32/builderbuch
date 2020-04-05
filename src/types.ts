@@ -5,7 +5,14 @@ import { Plugin, RuleSetRule } from 'webpack'
 export type PossibleArguments = WebpackBuildConfigArgs | WebpackStartConfigArgs
 
 type OverrideablePluginNames = 'HtmlWebpackPlugin'
+export type PluginAdditon = { type: 'addition'; plugin: Plugin }
+export type PluginOverride = {
+    type: 'override'
+    name: OverrideablePluginNames
+    plugin: Plugin
+}
 export type AdditionalPlugins = (
     args: PossibleArguments
-) => (Plugin | { name: OverrideablePluginNames; plugin: Plugin })[]
+) => (PluginAdditon | PluginOverride)[]
+
 export type AdditionalRules = (args: PossibleArguments) => RuleSetRule[]
