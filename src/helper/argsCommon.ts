@@ -6,7 +6,7 @@ type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
 export const argsCommon = {
     entry: {
         type: 'string',
-        default: 'src/index.ts' as string,
+        default: 'src/index' as string,
         alias: 'e',
     },
     output: { type: 'string', default: 'dist' as string, alias: 'o' },
