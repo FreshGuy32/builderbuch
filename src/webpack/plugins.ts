@@ -46,13 +46,16 @@ export const plugins = async (args: PossibleArguments) => {
             plugin.type === 'override'
     )
 
+    const htmlWebpackPlugin = overrides.find(
+        plugin => plugin.name === 'HtmlWebpackPlugin'
+    )
     if (args.type === 'start') {
-        const htmlWebpackPlugin = overrides.find(
-            plugin => plugin.name === 'HtmlWebpackPlugin'
-        )
         plugins.push(
             htmlWebpackPlugin?.value ?? (new HtmlWebpackPlugin() as Plugin)
         )
+    }
+    if (args.type === 'build' && htmlWebpackPlugin) {
+        plugins.push(htmlWebpackPlugin.value)
     }
 
     if (args.type === 'build' && args.analyze) {
