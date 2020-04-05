@@ -15,4 +15,5 @@ export type WebpackStartConfigArgs = Pick<
     | 'basePath'
     | 'type'
     | 'plugins'
+    | 'rules'
 >

@@ -4,15 +4,25 @@ import { Plugin, RuleSetRule } from 'webpack'
 
 export type PossibleArguments = WebpackBuildConfigArgs | WebpackStartConfigArgs
 
-type OverrideablePluginNames = 'HtmlWebpackPlugin'
-export type PluginAdditon = { type: 'addition'; plugin: Plugin }
-export type PluginOverride = {
+export type OverrideablePluginNames = 'HtmlWebpackPlugin'
+export type OverrideableRuleNames = 'styles'
+export type ExtendableAdditon<T> = { type: 'addition'; value: T }
+export type ExtendableOverride<T, U> = {
     type: 'override'
-    name: OverrideablePluginNames
-    plugin: Plugin
+    name: U
+    value: T
 }
+
 export type AdditionalPlugins = (
     args: PossibleArguments
-) => (PluginAdditon | PluginOverride)[]
+) => (
+    | ExtendableAdditon<Plugin>
+    | ExtendableOverride<Plugin, OverrideablePluginNames>
+)[]
 
-export type AdditionalRules = (args: PossibleArguments) => RuleSetRule[]
+export type AdditionalRules = (
+    args: PossibleArguments
+) => (
+    | ExtendableAdditon<RuleSetRule>
+    | ExtendableOverride<RuleSetRule, OverrideableRuleNames>
+)[]

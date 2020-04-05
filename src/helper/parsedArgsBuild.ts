@@ -20,4 +20,6 @@ export type WebpackBuildConfigArgs = Pick<
     | 'basePath'
     | 'plugins'
     | 'type'
+    | 'rules'
+    | 'watch'
 >

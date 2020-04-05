@@ -22,7 +22,7 @@ export default async (
         },
         mode: args.mode,
         module: {
-            rules: rules(args),
+            rules: await rules(args),
         },
         plugins: await plugins(args),
         resolve: {

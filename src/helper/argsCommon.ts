@@ -12,6 +12,7 @@ export const argsCommon = {
     output: { type: 'string', default: 'dist' as string, alias: 'o' },
 
     plugins: { type: 'string', default: 'plugins.js' as string },
+    rules: { type: 'string', default: 'rules.js' as string },
 
     environment: {
         type: 'string',
