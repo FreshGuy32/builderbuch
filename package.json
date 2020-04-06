@@ -8,7 +8,7 @@
         "web-start": "./bin/start.js"
     },
     "dependencies": {
-        "@types/webpack": "4.41.8",
+        "@types/webpack": "4.41.10",
         "babel-loader": "8.1.0",
         "fork-ts-checker-webpack-plugin": "4.1.0",
         "fs-extra": "^9.0.0",
