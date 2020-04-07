@@ -1,0 +1,33 @@
+name: Deploy to firebase
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                node-version: [10.x]
+
+        steps:
+            - uses: actions/checkout@v1
+            - name: Use Node.js ${{ matrix.node-version }} to build and deploy
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: yarn install, build, and deploy
+              run: |
+                  git checkout dist
+                  git merge master
+
+                  yarn install
+                  yarn build
+
+                  git commit -m "Created new release."
+                  git push
+              env:
+                  CI: true
