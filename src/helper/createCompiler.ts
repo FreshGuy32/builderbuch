@@ -14,6 +14,7 @@ export const createCompiler = async (args: PossibleArguments) => {
 
         const stringContent = content.toString()
         const jsonContent = JSON.parse(stringContent) as { homepage?: string }
+
         if (jsonContent.homepage) {
             publicPath = jsonContent.homepage
         }
