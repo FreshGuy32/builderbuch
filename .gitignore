@@ -65,6 +65,6 @@ node_modules/
 .env
 
 *.js
-/dist
+!/dist
 /build
 !/bin/*.js
