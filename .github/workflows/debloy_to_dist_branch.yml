@@ -30,7 +30,8 @@ jobs:
                   yarn install
                   yarn build
                   
-                  git commit -m "Created new release." -a
+                  git add --all
+                  git commit -m "Created new release."
               env:
                   CI: true
             - name: Push changes
