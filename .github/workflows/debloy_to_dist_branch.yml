@@ -25,6 +25,7 @@ jobs:
                   git config --global user.name "CreateRelease"
 
                   git checkout distribution
+                  git pull
                   git merge origin/master
 
                   yarn install
