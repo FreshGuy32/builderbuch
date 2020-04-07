@@ -31,7 +31,10 @@ jobs:
                   yarn build
 
                   git add --all
-                  git commit -m "Created new release."
-                  git push
+                  git commit -m "Created new release." -a
               env:
                   CI: true
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
