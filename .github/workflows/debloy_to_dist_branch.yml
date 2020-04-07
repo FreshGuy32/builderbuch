@@ -30,6 +30,7 @@ jobs:
                   yarn install
                   yarn build
 
+                  git add --all
                   git commit -m "Created new release."
                   git push
               env:
