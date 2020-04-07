@@ -8,7 +8,7 @@ import { startArgv } from './helper/parsedArgsStart'
     const compiler = await createCompiler(startArgv)
     const port = await choosePort('', 3000)
     if (!port) {
-        return console.error('No suitable port found!')
+        return console.error('No suitable network port found!')
     }
 
     const devServer = new WebpackDevServer(compiler, {
@@ -21,6 +21,7 @@ import { startArgv } from './helper/parsedArgsStart'
         if (er) {
             return console.log(er)
         }
+
         if (process.stdout.isTTY) {
             clearConsole()
         }
