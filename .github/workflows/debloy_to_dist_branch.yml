@@ -22,7 +22,7 @@ jobs:
             - name: yarn install, build, and deploy
               run: |
                   git config user.email "you@example.com"
-                  git config user.name "GITHUB_ACTOR"
+                  git config user.name "CreateRelease"
 
                   git checkout distribution
                   git pull
@@ -34,7 +34,7 @@ jobs:
                   git commit -m "Created new release." -a
               env:
                   CI: true
-            - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Push changes
+            #   uses: ad-m/github-push-action@master
+            #   with:
+            #       github_token: ${{ secrets.GITHUB_TOKEN }}
