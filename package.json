@@ -57,7 +57,7 @@
             "yarn typecheck-ts",
             "yarn lint-ts"
         ],
-        "*.{ts,tsx,html,json,yml,yaml}": [
+        "*.{ts,tsx,html,json}": [
             "yarn pretty"
         ]
     }
