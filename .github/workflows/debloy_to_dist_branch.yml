@@ -21,20 +21,19 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: yarn install, build, and deploy
               run: |
-                  git config user.email "you@example.com"
-                  git config user.name "CreateRelease"
-
-                  git checkout distribution
-                  git pull
-                  git merge origin/master
-
-                  yarn install
-                  yarn build
-
-                  git commit -m "Created new release." -a
+                git config --global user.email "you@example.com"
+                git config --global user.name "CreateRelease"
+                
+                git checkout dist
+                git merge origin/master
+                
+                yarn install
+                yarn build
+                
+                git commit -m "Created new release." -a
               env:
                   CI: true
-            # - name: Push changes
-            #   uses: ad-m/github-push-action@master
-            #   with:
-            #       github_token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
