@@ -32,9 +32,10 @@ jobs:
 
                   git add --all
                   git commit -m "Created new release." -a
+                  git push
               env:
                   CI: true
-            - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
+            # - name: Push changes
+            #   uses: ad-m/github-push-action@master
+            #   with:
+            #       github_token: ${{ secrets.GITHUB_TOKEN }}
