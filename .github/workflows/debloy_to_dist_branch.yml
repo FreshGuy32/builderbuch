@@ -22,7 +22,7 @@ jobs:
             - name: yarn install, build, and deploy
               run: |
                   git checkout dist
-                  git merge master
+                  git merge origin/master
 
                   yarn install
                   yarn build
