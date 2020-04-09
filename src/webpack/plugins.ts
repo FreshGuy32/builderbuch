@@ -33,6 +33,7 @@ export const plugins = async (args: PossibleArguments) => {
                 plugin.type === 'addition'
         )
         .map(({ value: plugin }) => plugin)
+
     const plugins: Plugin[] = [
         environmentPlugin,
         forkTsCheckerPlugin,
