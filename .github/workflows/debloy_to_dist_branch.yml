@@ -1,4 +1,4 @@
-name: Deploy to firebase
+name: Deploy to dist branch
 
 on:
     push:
@@ -21,7 +21,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
             - name: yarn install, build, and deploy
               run: |
-                  git config --global user.email "you@example.com"
+                  git config --global user.email "create@release.com"
                   git config --global user.name "CreateRelease"
 
                   git checkout distribution
