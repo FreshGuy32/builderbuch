@@ -66,4 +66,5 @@ node_modules/
 
 *.js
 !/dist
+!/dist/**
 !/bin/*.js
