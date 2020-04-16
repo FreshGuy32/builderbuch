@@ -8,12 +8,5 @@ const { argv } = yargs.options({
 export const startArgv = { ...argv, type: 'start' } as const
 export type WebpackStartConfigArgs = Pick<
     typeof startArgv,
-    | 'entry'
-    | 'output'
-    | 'mode'
-    | 'environment'
-    | 'basePath'
-    | 'type'
-    | 'plugins'
-    | 'rules'
+    keyof typeof argsCommon
 >

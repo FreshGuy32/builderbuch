@@ -12,14 +12,5 @@ export const buildArgv = { ...argv, type: 'build' } as const
 
 export type WebpackBuildConfigArgs = Pick<
     typeof buildArgv,
-    | 'entry'
-    | 'output'
-    | 'analyze'
-    | 'mode'
-    | 'environment'
-    | 'basePath'
-    | 'plugins'
-    | 'type'
-    | 'rules'
-    | 'watch'
+    keyof typeof argsCommon | 'analyze' | 'watch'
 >
