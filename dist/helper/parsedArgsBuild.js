@@ -9,7 +9,13 @@ const yargs_1 = __importDefault(require('yargs'))
 const argsCommon_1 = require('./argsCommon')
 const { argv } = yargs_1.default.options({
     ...argsCommon_1.argsCommon,
-    analyze: { type: 'boolean', default: false, alias: 'a' },
+    analyze: {
+        type: 'boolean',
+        default: false,
+        alias: 'a',
+        description: 'Wether to include WebpackBundleAnalyzer plugin.',
+        boolean: true,
+    },
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
 exports.buildArgv = { ...argv, type: 'build' }

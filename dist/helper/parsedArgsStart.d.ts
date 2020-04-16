@@ -1,3 +1,4 @@
+import { argsCommon } from './argsCommon'
 export declare const startArgv: {
     readonly type: 'start'
     readonly entry: string
@@ -12,12 +13,5 @@ export declare const startArgv: {
 }
 export declare type WebpackStartConfigArgs = Pick<
     typeof startArgv,
-    | 'entry'
-    | 'output'
-    | 'mode'
-    | 'environment'
-    | 'basePath'
-    | 'type'
-    | 'plugins'
-    | 'rules'
+    keyof typeof argsCommon | 'type'
 >

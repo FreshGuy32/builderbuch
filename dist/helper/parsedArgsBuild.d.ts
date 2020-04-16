@@ -1,3 +1,4 @@
+import { argsCommon } from './argsCommon'
 export declare const buildArgv: {
     readonly type: 'build'
     readonly analyze: boolean
@@ -14,14 +15,5 @@ export declare const buildArgv: {
 }
 export declare type WebpackBuildConfigArgs = Pick<
     typeof buildArgv,
-    | 'entry'
-    | 'output'
-    | 'analyze'
-    | 'mode'
-    | 'environment'
-    | 'basePath'
-    | 'plugins'
-    | 'type'
-    | 'rules'
-    | 'watch'
+    keyof typeof argsCommon | 'analyze' | 'watch' | 'type'
 >
