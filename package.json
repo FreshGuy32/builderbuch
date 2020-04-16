@@ -53,10 +53,10 @@
     },
     "lint-staged": {
         "src/*.{ts,tsx}": [
-            "yarn build-precommit",
+            "yarn build",
             "yarn lint-ts"
         ],
-        "*.{d.ts,ts,tsx,js,html,json}": [
+        "*.{ts,tsx,js,html,json}": [
             "yarn pretty"
         ]
     }
