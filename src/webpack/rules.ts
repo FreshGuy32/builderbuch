@@ -1,4 +1,3 @@
-import { resolve } from 'path'
 import {
     PossibleArguments,
     ExtendableAdditon,
@@ -7,6 +6,7 @@ import {
 } from '../types'
 import { getAdditionalRules } from '../helper/getAdditional'
 import { RuleSetRule } from 'webpack'
+import { babelConfig } from './babelConfig'
 
 export const rules = async (args: PossibleArguments) => {
     const additionalRules = (await getAdditionalRules(args)) ?? []
@@ -34,7 +34,7 @@ export const rules = async (args: PossibleArguments) => {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    extends: resolve(args.basePath, '.babelrc'),
+                    ...babelConfig(args),
                     envName: args.environment,
                 },
             },
