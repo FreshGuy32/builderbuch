@@ -34,7 +34,7 @@ export const rules = async (args: PossibleArguments) => {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    ...babelConfig(args),
+                    ...(await babelConfig(args)),
                     envName: args.environment,
                 },
             },
