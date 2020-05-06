@@ -1,11 +1,11 @@
 {
-    "name": "web-build-scripts",
+    "name": "builderbuch",
     "version": "0.0.0",
     "main": "index.js",
     "license": "MIT",
     "bin": {
-        "web-build": "./bin/build.js",
-        "web-start": "./bin/start.js"
+        "bb-build": "./bin/build.js",
+        "bb-start": "./bin/start.js"
     },
     "dependencies": {
         "@babel/core": "^7.9.6",

@@ -7,7 +7,7 @@ By design the project doesn't include much more than `babel-loader`, `source-map
 `plugins.ts`
 
 ```ts
-import { AdditionalPlugins } from 'web-build-scripts/dist/types'
+import { AdditionalPlugins } from 'builderbuch/dist/types'
 
 const plugins: AdditionalPlugins = args => [
     // ...
@@ -19,7 +19,7 @@ export default plugins
 `rules.ts`
 
 ```ts
-import { AdditionalRules } from 'web-build-scripts/dist/types'
+import { AdditionalRules } from 'builderbuch/dist/types'
 
 const rules: AdditionalRules = args => [
     // ...
