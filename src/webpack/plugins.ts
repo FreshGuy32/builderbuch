@@ -10,6 +10,7 @@ import {
 } from '../types'
 import { getAdditionalPlugins } from '../helper/getAdditional'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { pathExists } from 'fs-extra'
 
 export const plugins = async (args: PossibleArguments) => {
     const additionalPlugins = (await getAdditionalPlugins(args)) ?? []
@@ -19,13 +20,18 @@ export const plugins = async (args: PossibleArguments) => {
         environment: args.environment,
     })
 
-    const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
-        tsconfig: resolve(args.basePath, 'tsconfig.json'),
-        eslint: true,
-        eslintOptions: {
-            configFile: resolve(args.basePath, '.eslintrc'),
-        },
-    }) as Plugin
+    const eslintConfigPath = resolve(args.basePath, '.eslintrc')
+    const tsConfigPath = resolve(args.basePath, 'tsconfig.json')
+    const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin()
+    if (await pathExists(tsConfigPath)) {
+        forkTsCheckerPlugin.options.tsconfig = tsConfigPath
+    }
+    if (await pathExists(eslintConfigPath)) {
+        forkTsCheckerPlugin.options.eslint = true
+        forkTsCheckerPlugin.options.eslintOptions = {
+            configFile: eslintConfigPath,
+        }
+    }
 
     const additions = additionalPlugins
         .filter(
