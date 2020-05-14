@@ -22,7 +22,8 @@
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
         "build": "tsc --project ./tsconfig.json",
-        "prebuild": "rimraf src/**/*.{js,js.map,d.ts}"
+        "prebuild": "rimraf src/**/*.{js,js.map,d.ts}",
+        "build-watch": "yarn build -w"
     },
     "bugs": {
         "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
