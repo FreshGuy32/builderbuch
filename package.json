@@ -1,7 +1,6 @@
 {
     "name": "builderbuch",
     "version": "0.0.0",
-    "main": "index.js",
     "license": "MIT",
     "private": true,
     "dependencies": {
@@ -39,10 +38,11 @@
         "rimraf": "^3.0.2"
     },
     "scripts": {
+        "build": "yarn lerna run build",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "build-precommit": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck",
         "pretty": "prettier --write",
-        "prepublish": "yarn lerna run build --paralell"
+        "prepublish": "yarn build"
     },
     "husky": {
         "hooks": {
