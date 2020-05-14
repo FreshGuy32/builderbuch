@@ -65,5 +65,7 @@ node_modules/
 .env
 
 *.js
-dist
+packages/**/src/**/*.js
+packages/**/src/**/*.js.map
+packages/**/src/**/*.d.ts
 !/packages/cli/bin/*

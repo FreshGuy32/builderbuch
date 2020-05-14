@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import createConfig from '../webpack/webpack.config'
-import { findClosestPackageFile } from '../helper/findClosestPackageFile'
+import { findClosestPackageFile } from './findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
 import { PossibleArguments } from '../types'

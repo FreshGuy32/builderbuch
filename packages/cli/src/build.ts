@@ -1,7 +1,7 @@
-import { buildArgv } from './helper/parsedArgsBuild'
+import { buildArgv } from '@builderbuch/core/src/helper/parsedArgsBuild'
 import clearConsole from 'react-dev-utils/clearConsole'
-import { createCompiler } from './helper/createCompiler'
-import { onSigint } from './helper/onSigint'
+import { createCompiler } from '@builderbuch/core/src/helper/createCompiler'
+import { onSigint } from '@builderbuch/core/src/helper/onSigint'
 ;(async () => {
     const compiler = await createCompiler(buildArgv)
 

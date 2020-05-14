@@ -7,7 +7,7 @@ import {
     ExtendableAdditon,
     ExtendableOverride,
     OverrideablePluginNames,
-} from '../types'
+} from '@builderbuch/core/src/types'
 import { getAdditionalPlugins } from '../helper/getAdditional'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { pathExists } from 'fs-extra'

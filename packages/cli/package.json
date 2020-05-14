@@ -10,7 +10,7 @@
         "bb-start": "./bin/start.js"
     },
     "directories": {
-        "lib": "lib",
+        "src": "lib",
         "test": "__tests__"
     },
     "files": [
@@ -26,9 +26,12 @@
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
         "build": "tsc --project ./tsconfig.json",
-        "prebuild": "rimraf dist"
+        "prebuild": "rimraf src/**/*.{js,js.map,d.ts}"
     },
     "bugs": {
         "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
+    },
+    "dependencies": {
+        "@builderbuch/core": "^0.0.0"
     }
 }
