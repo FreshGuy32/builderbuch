@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
-    "homepage": "https://github.com/FreshGuy32/web-build-scripts#readme",
+    "homepage": "https://github.com/FreshGuy32/builderbuchs#readme",
     "license": "MIT",
     "directories": {
         "src": "src",
@@ -17,7 +17,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/FreshGuy32/web-build-scripts.git"
+        "url": "git+https://github.com/FreshGuy32/builderbuchs.git"
     },
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
@@ -26,6 +26,6 @@
         "build-watch": "yarn build -w"
     },
     "bugs": {
-        "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
+        "url": "https://github.com/FreshGuy32/builderbuchs/issues"
     }
 }
