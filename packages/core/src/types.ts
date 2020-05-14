@@ -1,5 +1,5 @@
-import { WebpackStartConfigArgs } from '@builderbuch/core/src/helper/parsedArgsStart'
-import { WebpackBuildConfigArgs } from '@builderbuch/core/src/helper/parsedArgsBuild'
+import { WebpackStartConfigArgs } from '@builderbuch/cli/src/args/parsedArgsStart'
+import { WebpackBuildConfigArgs } from '@builderbuch/cli/src/args/parsedArgsBuild'
 import { Plugin, RuleSetRule } from 'webpack'
 
 export type PossibleArguments = WebpackBuildConfigArgs | WebpackStartConfigArgs

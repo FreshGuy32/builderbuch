@@ -10,11 +10,11 @@
         "bb-start": "./bin/start.js"
     },
     "directories": {
-        "src": "lib",
+        "src": "src",
         "test": "__tests__"
     },
     "files": [
-        "lib"
+        "src"
     ],
     "publishConfig": {
         "registry": "http://localhost:4873"

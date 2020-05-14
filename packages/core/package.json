@@ -6,11 +6,11 @@
     "homepage": "https://github.com/FreshGuy32/web-build-scripts#readme",
     "license": "MIT",
     "directories": {
-        "lib": "lib",
+        "src": "src",
         "test": "__tests__"
     },
     "files": [
-        "lib"
+        "src"
     ],
     "publishConfig": {
         "registry": "http://localhost:4873"
