@@ -1,0 +1,32 @@
+{
+    "name": "@builderbuch/cli",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "author": "FreshGuy32 <mathias.trapl@gmail.com>",
+    "homepage": "https://github.com/FreshGuy32/web-build-scripts#readme",
+    "license": "MIT",
+    "bin": {
+        "bb-build": "./bin/build.js",
+        "bb-start": "./bin/start.js"
+    },
+    "directories": {
+        "lib": "lib",
+        "test": "__tests__"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "registry": "http://localhost:4873"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FreshGuy32/web-build-scripts.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+        "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
+    }
+}

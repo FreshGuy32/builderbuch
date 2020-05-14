@@ -66,3 +66,4 @@ node_modules/
 
 *.js
 dist
+!/packages/cli/bin/*

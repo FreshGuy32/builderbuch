@@ -3,10 +3,7 @@
     "version": "0.0.0",
     "main": "index.js",
     "license": "MIT",
-    "bin": {
-        "bb-build": "./bin/build.js",
-        "bb-start": "./bin/start.js"
-    },
+    "private": true,
     "dependencies": {
         "@babel/core": "^7.9.6",
         "@babel/preset-typescript": "^7.9.0",
@@ -36,6 +33,7 @@
         "eslint": "^7.0.0",
         "eslint-config-prettier": "^6.10.0",
         "husky": "^4.2.3",
+        "lerna": "^3.21.0",
         "lint-staged": "^10.0.8",
         "prettier": "^2.0.1"
     },
@@ -58,5 +56,8 @@
         "*.{ts,tsx,js,html,json}": [
             "yarn pretty"
         ]
-    }
+    },
+    "workspaces": [
+        "packages/*"
+    ]
 }
