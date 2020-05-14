@@ -1,6 +1,6 @@
 {
     "name": "@builderbuch/cli",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
     "homepage": "https://github.com/FreshGuy32/web-build-scripts#readme",
@@ -33,6 +33,6 @@
         "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
     },
     "dependencies": {
-        "@builderbuch/core": "^0.0.0"
+        "@builderbuch/core": "^0.1.0"
     }
 }
