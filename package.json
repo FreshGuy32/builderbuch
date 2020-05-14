@@ -35,14 +35,14 @@
         "husky": "^4.2.3",
         "lerna": "^3.21.0",
         "lint-staged": "^10.0.8",
-        "prettier": "^2.0.1"
+        "prettier": "^2.0.1",
+        "rimraf": "^3.0.2"
     },
     "scripts": {
-        "build": "tsc --project ./tsconfig.json",
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "build-precommit": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck",
         "pretty": "prettier --write",
-        "prepublish": "yarn build"
+        "prepublish": "yarn lerna run build --paralell"
     },
     "husky": {
         "hooks": {

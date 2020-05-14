@@ -24,7 +24,9 @@
         "url": "git+https://github.com/FreshGuy32/web-build-scripts.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "test": "echo \"Error: run tests from root\" && exit 1",
+        "build": "tsc --project ./tsconfig.json",
+        "prebuild": "rimraf dist"
     },
     "bugs": {
         "url": "https://github.com/FreshGuy32/web-build-scripts/issues"
