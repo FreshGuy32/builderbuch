@@ -1,4 +1,4 @@
-import { AdditionalPlugins, AdditionalRules } from '../types'
+import { AdditionalPlugins, AdditionalRules } from '../types/extendability'
 
 interface IPluginModule<T extends 'plugins' | 'rules'> {
     default: T extends 'plugins' ? AdditionalPlugins : AdditionalRules

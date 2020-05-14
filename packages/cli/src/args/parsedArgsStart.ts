@@ -1,12 +1,9 @@
 import yargs from 'yargs'
 import { argsCommon } from './argsCommon'
+import { IStartArgs } from '@builderbuch/core/src/types/args'
 
 const { argv } = yargs.options({
     ...argsCommon,
 })
 
-export const startArgv = { ...argv, type: 'start' } as const
-export type WebpackStartConfigArgs = Pick<
-    typeof startArgv,
-    keyof typeof argsCommon | 'type'
->
+export const startArgv: Readonly<IStartArgs> = { ...argv, type: 'start' }

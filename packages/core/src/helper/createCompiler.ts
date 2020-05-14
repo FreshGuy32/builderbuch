@@ -3,9 +3,9 @@ import createConfig from '../webpack/webpack.config'
 import { findClosestPackageFile } from './findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { PossibleArguments } from '../types'
+import { PossibleArgs } from '../types/args'
 
-export const createCompiler = async (args: PossibleArguments) => {
+export const createCompiler = async (args: PossibleArgs) => {
     let publicPath = '/'
 
     const closestPackageJsonPath = await findClosestPackageFile(process.cwd())

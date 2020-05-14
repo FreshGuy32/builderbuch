@@ -1,5 +1,6 @@
 import yargs from 'yargs'
 import { argsCommon } from './argsCommon'
+import { IBuildArgs } from '@builderbuch/core/src/types/args'
 
 const { argv } = yargs.options({
     ...argsCommon,
@@ -14,9 +15,4 @@ const { argv } = yargs.options({
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
-export const buildArgv = { ...argv, type: 'build' } as const
-
-export type WebpackBuildConfigArgs = Pick<
-    typeof buildArgv,
-    keyof typeof argsCommon | 'analyze' | 'watch' | 'type'
->
+export const buildArgv: Readonly<IBuildArgs> = { ...argv, type: 'build' }

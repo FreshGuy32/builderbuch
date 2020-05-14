@@ -1,14 +1,14 @@
 import {
-    PossibleArguments,
     ExtendableAdditon,
     ExtendableOverride,
     OverrideableRuleNames,
-} from '../types'
+} from '../types/extendability'
+import { PossibleArgs } from '../types/args'
 import { getAdditionalRules } from '../helper/getAdditional'
 import { RuleSetRule } from 'webpack'
 import { babelConfig } from './babelConfig'
 
-export const rules = async (args: PossibleArguments) => {
+export const rules = async (args: PossibleArgs) => {
     const additionalRules = (await getAdditionalRules(args)) ?? []
 
     const additions = additionalRules.filter(

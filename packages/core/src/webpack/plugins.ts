@@ -2,17 +2,17 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { Plugin, EnvironmentPlugin } from 'webpack'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import { PossibleArgs } from '@builderbuch/core/src/types/args'
 import {
-    PossibleArguments,
     ExtendableAdditon,
     ExtendableOverride,
     OverrideablePluginNames,
-} from '@builderbuch/core/src/types'
+} from '@builderbuch/core/src/types/extendability'
 import { getAdditionalPlugins } from '../helper/getAdditional'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { pathExists } from 'fs-extra'
 
-export const plugins = async (args: PossibleArguments) => {
+export const plugins = async (args: PossibleArgs) => {
     const additionalPlugins = (await getAdditionalPlugins(args)) ?? []
 
     const environmentPlugin = new EnvironmentPlugin({

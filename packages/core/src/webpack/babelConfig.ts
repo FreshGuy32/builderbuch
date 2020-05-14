@@ -1,8 +1,8 @@
-import { PossibleArguments } from '../types'
+import { PossibleArgs } from '../types/args'
 import { resolve } from 'path'
 import { pathExists } from 'fs-extra'
 
-export const babelConfig = async (args: PossibleArguments) => {
+export const babelConfig = async (args: PossibleArgs) => {
     const babelConfigPath = resolve(args.basePath, '.babelrc')
     return {
         extends: (await pathExists(babelConfigPath))

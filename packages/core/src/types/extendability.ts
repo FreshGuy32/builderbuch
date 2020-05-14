@@ -1,8 +1,5 @@
-import { WebpackStartConfigArgs } from '@builderbuch/cli/src/args/parsedArgsStart'
-import { WebpackBuildConfigArgs } from '@builderbuch/cli/src/args/parsedArgsBuild'
 import { Plugin, RuleSetRule } from 'webpack'
-
-export type PossibleArguments = WebpackBuildConfigArgs | WebpackStartConfigArgs
+import { PossibleArgs } from './args'
 
 export type OverrideablePluginNames = 'HtmlWebpackPlugin'
 export type OverrideableRuleNames = 'styles'
@@ -14,14 +11,14 @@ export type ExtendableOverride<T, U> = {
 }
 
 export type AdditionalPlugins = (
-    args: PossibleArguments
+    args: PossibleArgs
 ) => (
     | ExtendableAdditon<Plugin>
     | ExtendableOverride<Plugin, OverrideablePluginNames>
 )[]
 
 export type AdditionalRules = (
-    args: PossibleArguments
+    args: PossibleArgs
 ) => (
     | ExtendableAdditon<RuleSetRule>
     | ExtendableOverride<RuleSetRule, OverrideableRuleNames>

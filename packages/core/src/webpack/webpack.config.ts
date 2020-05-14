@@ -2,10 +2,10 @@ import { Configuration } from 'webpack'
 import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
-import { PossibleArguments } from '../types'
+import { PossibleArgs } from '../types/args'
 
 export default async (
-    args: PossibleArguments & {
+    args: PossibleArgs & {
         publicPath: string
     }
 ) => {
