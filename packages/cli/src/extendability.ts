@@ -1,1 +1,1 @@
-export * from '@builderbuch/core/src/types/extendability'
+export * from '@freshguy32/builderbuch_core/src/types/extendability'

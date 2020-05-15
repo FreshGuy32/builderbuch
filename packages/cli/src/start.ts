@@ -1,5 +1,5 @@
 import clearConsole from 'react-dev-utils/clearConsole'
-import { createCompiler } from '@builderbuch/core/src/helper/createCompiler'
+import { createCompiler } from '@freshguy32/builderbuch_core/src/helper/createCompiler'
 import WebpackDevServer from 'webpack-dev-server'
 import { choosePort } from 'react-dev-utils/WebpackDevServerUtils'
 import { onSigint } from './helper/onSigint'

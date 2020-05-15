@@ -1,9 +1,9 @@
 {
-    "name": "@builderbuch/core",
+    "name": "@freshguy32/builderbuch_core",
     "version": "0.1.1",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
-    "homepage": "https://github.com/FreshGuy32/builderbuchs#readme",
+    "homepage": "https://github.com/FreshGuy32/builderbuch#readme",
     "license": "MIT",
     "directories": {
         "src": "src",
@@ -13,11 +13,12 @@
         "src"
     ],
     "publishConfig": {
-        "registry": "http://localhost:4873"
+        "registry": "https://npm.pkg.github.com/"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/FreshGuy32/builderbuchs.git"
+        "url": "ssh://git@github.com/FreshGuy32/builderbuch.git",
+        "directory": "packages/core"
     },
     "scripts": {
         "test": "echo \"Error: run tests from root\" && exit 1",
@@ -26,7 +27,7 @@
         "build-watch": "yarn build -w"
     },
     "bugs": {
-        "url": "https://github.com/FreshGuy32/builderbuchs/issues"
+        "url": "https://github.com/FreshGuy32/builderbuch/issues"
     },
     "dependencies": {
         "@babel/core": "^7.9.6",

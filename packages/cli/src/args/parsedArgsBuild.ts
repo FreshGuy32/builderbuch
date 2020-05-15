@@ -1,6 +1,6 @@
 import yargs from 'yargs'
 import { argsCommon } from './argsCommon'
-import { IBuildArgs } from '@builderbuch/core/src/types/args'
+import { IBuildArgs } from '@freshguy32/builderbuch_core/src/types/args'
 
 const { argv } = yargs.options({
     ...argsCommon,
