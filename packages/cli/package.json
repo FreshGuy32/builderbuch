@@ -1,6 +1,6 @@
 {
     "name": "@freshguy32/builderbuch_cli",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
     "homepage": "https://github.com/FreshGuy32/builderbuch#readme",
@@ -34,7 +34,7 @@
         "url": "https://github.com/FreshGuy32/builderbuch/issues"
     },
     "dependencies": {
-        "@freshguy32/builderbuch_core": "^0.1.1",
+        "@freshguy32/builderbuch_core": "^0.1.2",
         "yargs": "^15.3.1"
     },
     "devDependencies": {
