@@ -68,5 +68,8 @@ node_modules/
 packages/**/src/**/*.js
 packages/**/src/**/*.js.map
 packages/**/src/**/*.d.ts
+packages/**/__tests__/**/*.js
+packages/**/__tests__/**/*.js.map
+packages/**/__tests__/**/*.d.ts
 !/packages/cli/bin/*
 !commitlint.config.js

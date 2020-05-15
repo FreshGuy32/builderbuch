@@ -5,17 +5,25 @@
     "private": true,
     "dependencies": {},
     "devDependencies": {
+        "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
+        "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+        "@babel/preset-env": "^7.9.6",
+        "@babel/preset-typescript": "^7.9.0",
         "@commitlint/cli": "^8.3.5",
         "@commitlint/config-conventional": "^8.3.4",
         "@commitlint/config-lerna-scopes": "^8.3.4",
         "@commitlint/prompt-cli": "^8.3.5",
+        "@types/jest": "^25.2.2",
         "@typescript-eslint/eslint-plugin": "^2.33.0",
         "@typescript-eslint/parser": "^2.33.0",
+        "babel-jest": "^26.0.1",
         "eslint": "^7.0.0",
         "eslint-config-prettier": "^6.10.0",
         "husky": "^4.2.3",
+        "jest": "^26.0.1",
         "lerna": "^3.21.0",
         "lint-staged": "^10.0.8",
+        "memfs": "^3.1.3",
         "prettier": "^2.0.1",
         "rimraf": "^3.0.2"
     },
@@ -26,7 +34,8 @@
         "build-precommit": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck",
         "pretty": "prettier --write",
         "prepublish": "yarn build",
-        "commit": "commit"
+        "commit": "commit",
+        "test": "yarn lerna run test --parallel"
     },
     "husky": {
         "hooks": {

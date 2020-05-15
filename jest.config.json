@@ -1,0 +1,4 @@
+{
+    "roots": ["<rootDir>/packages/cli"],
+    "modulePathIgnorePatterns": ["spec\\.ts", "spec\\.d\\.ts"]
+}
