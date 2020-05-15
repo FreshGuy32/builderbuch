@@ -5,6 +5,9 @@
     "private": true,
     "dependencies": {},
     "devDependencies": {
+        "@commitlint/cli": "^8.3.5",
+        "@commitlint/config-conventional": "^8.3.4",
+        "@commitlint/prompt-cli": "^8.3.5",
         "@typescript-eslint/eslint-plugin": "^2.33.0",
         "@typescript-eslint/parser": "^2.33.0",
         "eslint": "^7.0.0",
@@ -21,11 +24,13 @@
         "lint-ts": "eslint --ext ts,tsx -c ./.eslintrc.prod.json",
         "build-precommit": "tsc --module esNext --target esnext --lib esnext,dom --moduleResolution node --allowSyntheticDefaultImports --jsx react --resolveJsonModule --downlevelIteration --strict --noImplicitReturns --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --skipLibCheck",
         "pretty": "prettier --write",
-        "prepublish": "yarn build"
+        "prepublish": "yarn build",
+        "commit": "commit"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
     "lint-staged": {

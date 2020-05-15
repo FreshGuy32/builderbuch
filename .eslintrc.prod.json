@@ -36,5 +36,9 @@
             "jsx": true
         },
         "project": "./tsconfig.json"
+    },
+    "env": {
+        "amd": true,
+        "node": true
     }
 }
