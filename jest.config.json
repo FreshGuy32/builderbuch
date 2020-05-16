@@ -1,4 +1,7 @@
 {
-    "roots": ["<rootDir>/packages/cli", "<rootDir>/packages/core"],
+    "roots": [
+        "<rootDir>/packages/cli/__tests__",
+        "<rootDir>/packages/core/__tests__"
+    ],
     "modulePathIgnorePatterns": ["spec\\.ts", "spec\\.d\\.ts"]
 }
