@@ -15,7 +15,11 @@ export const plugins = async (
     extensionRules: ExtensionPlugins,
     args: PossibleArgs
 ) => {
-    const additionalPlugins = extensionRules(args)
+    const additionalPlugins = extensionRules(
+        args.basePath,
+        args.environment,
+        args.mode
+    )
 
     const environmentPlugin = new EnvironmentPlugin({
         mode: args.mode,

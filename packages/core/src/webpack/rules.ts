@@ -12,7 +12,11 @@ export const rules = async (
     extensionRules: ExtensionRules,
     args: PossibleArgs
 ) => {
-    const additionalRules = extensionRules(args)
+    const additionalRules = extensionRules(
+        args.basePath,
+        args.environment,
+        args.mode
+    )
 
     const additions = additionalRules.filter(
         (value): value is ExtensionRuleAdditon => value.mode === 'addition'
@@ -30,12 +34,10 @@ export const rules = async (
         {
             test: /\.(js|ts)x?$/i,
             exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    ...defaultBabelConfig(resolve(args.basePath, '.babelrc')),
-                    envName: args.environment,
-                },
+            loader: 'babel-loader',
+            options: {
+                ...defaultBabelConfig(resolve(args.basePath, '.babelrc')),
+                envName: args.environment,
             },
         },
         ...additions.map(({ value }) => value),

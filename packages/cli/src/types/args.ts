@@ -1,6 +1,5 @@
-import webpack from 'webpack'
+import { Environment, Mode } from '@freshguy32/builderbuch_core/src/types/build'
 
-type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
 export interface ICommonArgs {
     basePath: string
 
@@ -10,7 +9,7 @@ export interface ICommonArgs {
     plugins: string
     rules: string
 
-    environment: 'prod' | 'stg' | 'dev'
+    environment: Environment
     mode: Mode
 }
 

@@ -1,5 +1,4 @@
 import { Plugin, RuleSetRule } from 'webpack'
-import { PossibleArgs } from './args'
 
 export type ExtensionType = 'plugins' | 'rules'
 
@@ -35,8 +34,14 @@ export type ExtensionPluginValues =
     | ExtensionPluginOverride
 export type ExtensionRuleValues = ExtensionRuleAdditon | ExtensionRuleOverride
 
-export type ExtensionPlugins = (args: PossibleArgs) => ExtensionPluginValues[]
-export type ExtensionRules = (args: PossibleArgs) => ExtensionRuleValues[]
+type ExtensionFn<T> = (
+    basePath: string,
+    environment: string,
+    mode: string
+) => T[]
+
+export type ExtensionPlugins = ExtensionFn<ExtensionPluginValues>
+export type ExtensionRules = ExtensionFn<ExtensionRuleValues>
 
 export type ExtensionValues = ExtensionPluginValues | ExtensionRuleValues
 export type ExtensionFunctions = ExtensionPlugins | ExtensionRules
