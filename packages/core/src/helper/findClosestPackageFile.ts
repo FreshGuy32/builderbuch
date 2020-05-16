@@ -16,8 +16,5 @@ export const findClosestPackageFile = async (
         return resolve(path, packageJson)
     }
 
-    return findClosestPackageFile(
-        resolve(__dirname, '..'),
-        remainingIteration - 1
-    )
+    return findClosestPackageFile(resolve(path, '..'), remainingIteration - 1)
 }
