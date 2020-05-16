@@ -1,9 +1,11 @@
-import webpack from 'webpack'
+import yargs from 'yargs'
+import {
+    BuildEnvironment,
+    BuildMode,
+} from '@freshguy32/builderbuch_core/src/types/build'
+import { IArguments } from '../types/args'
 
-type Environments = 'prod' | 'stg' | 'dev'
-
-type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
-export const argsCommon = {
+const args = yargs.options({
     entry: {
         type: 'string',
         default: 'src/index' as string,
@@ -17,21 +19,16 @@ export const argsCommon = {
         description: 'Path for the webpack outputs.',
     },
 
-    plugins: {
+    extension: {
         type: 'string',
-        default: 'plugins.js' as string,
-        description: 'Path to the plugins file that should be loaded.',
-    },
-    rules: {
-        type: 'string',
-        default: 'rules.js' as string,
-        description: 'Path to the rules file that should be loaded.',
+        default: 'extension.js' as string,
+        description: 'Path to the extension file that should be loaded.',
     },
 
     environment: {
         type: 'string',
-        choices: ['prod', 'stg', 'dev'] as Environments[],
-        default: 'stg' as Environments,
+        choices: ['prod', 'stg', 'dev'] as BuildEnvironment[],
+        default: 'stg' as BuildEnvironment,
         description:
             'Environment for Browserlist and also gets exposed via Webpack into the build.',
     },
@@ -43,9 +40,20 @@ export const argsCommon = {
     },
     mode: {
         type: 'string',
-        choices: ['development', 'production'] as Mode[],
-        default: 'development' as Mode,
+        choices: ['development', 'production'] as BuildMode[],
+        default: 'development' as BuildMode,
         description:
             'Webpack mode and also gets exposed via Webpack into the build.',
     },
-} as const
+
+    analyze: {
+        type: 'boolean',
+        default: false,
+        alias: 'a',
+        description: 'Wether to include WebpackBundleAnalyzer plugin.',
+        boolean: true,
+    },
+
+    watch: { type: 'boolean', default: false, alias: 'w' },
+})
+export const argv: Readonly<IArguments> = args.argv

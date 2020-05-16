@@ -1,22 +1,22 @@
 import {
-    ExtensionRules,
     ExtensionRuleOverride,
     ExtensionRuleAdditon,
 } from '../types/extendability'
-import { PossibleArgs } from '../types/args'
 import { RuleSetRule } from 'webpack'
 import { defaultBabelConfig } from './defaultBabelConfig'
 import { resolve } from 'path'
+import { IBuildParameters } from '../types/build'
 
-export const rules = async (
-    extensionRules: ExtensionRules,
-    args: PossibleArgs
-) => {
-    const additionalRules = extensionRules(
-        args.basePath,
-        args.environment,
-        args.mode
-    )
+export const rules = async ({
+    basePath,
+    environment,
+    extensionRules,
+    mode,
+}: Pick<
+    IBuildParameters,
+    'type' | 'basePath' | 'environment' | 'mode' | 'extensionRules'
+>) => {
+    const additionalRules = extensionRules(basePath, environment, mode)
 
     const additions = additionalRules.filter(
         (value): value is ExtensionRuleAdditon => value.mode === 'addition'
@@ -36,8 +36,8 @@ export const rules = async (
             exclude: /node_modules/,
             loader: 'babel-loader',
             options: {
-                ...defaultBabelConfig(resolve(args.basePath, '.babelrc')),
-                envName: args.environment,
+                ...defaultBabelConfig(resolve(basePath, '.babelrc')),
+                envName: environment,
             },
         },
         ...additions.map(({ value }) => value),

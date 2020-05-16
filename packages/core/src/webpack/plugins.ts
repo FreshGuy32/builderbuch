@@ -2,32 +2,39 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { Plugin, EnvironmentPlugin } from 'webpack'
 import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import { PossibleArgs } from '../types/args'
 import {
-    ExtensionPlugins,
     ExtensionPluginAdditon,
     ExtensionPluginOverride,
 } from '../types/extendability'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { pathExists } from 'fs-extra'
+import { IBuildParameters } from '../types/build'
 
-export const plugins = async (
-    extensionRules: ExtensionPlugins,
-    args: PossibleArgs
-) => {
-    const additionalPlugins = extensionRules(
-        args.basePath,
-        args.environment,
-        args.mode
-    )
+export const plugins = async ({
+    type,
+    analyze,
+    basePath,
+    environment,
+    extensionPlugins,
+    mode,
+}: Pick<
+    IBuildParameters,
+    | 'analyze'
+    | 'basePath'
+    | 'environment'
+    | 'extensionPlugins'
+    | 'mode'
+    | 'type'
+>) => {
+    const additionalPlugins = extensionPlugins(basePath, environment, mode)
 
     const environmentPlugin = new EnvironmentPlugin({
-        mode: args.mode,
-        environment: args.environment,
+        mode: mode,
+        environment: environment,
     })
 
-    const eslintConfigPath = resolve(args.basePath, '.eslintrc')
-    const tsConfigPath = resolve(args.basePath, 'tsconfig.json')
+    const eslintConfigPath = resolve(basePath, '.eslintrc')
+    const tsConfigPath = resolve(basePath, 'tsconfig.json')
     const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin()
     if (await pathExists(tsConfigPath)) {
         forkTsCheckerPlugin.options.tsconfig = tsConfigPath
@@ -60,16 +67,16 @@ export const plugins = async (
     const htmlWebpackPlugin = overrides.find(
         plugin => plugin.name === 'HtmlWebpackPlugin'
     )
-    if (args.type === 'start') {
+    if (type === 'start') {
         plugins.push(
             htmlWebpackPlugin?.value ?? (new HtmlWebpackPlugin() as Plugin)
         )
     }
-    if (args.type === 'build' && htmlWebpackPlugin) {
+    if (type === 'build' && htmlWebpackPlugin) {
         plugins.push(htmlWebpackPlugin.value)
     }
 
-    if (args.type === 'build' && args.analyze) {
+    if (type === 'build' && analyze) {
         plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',

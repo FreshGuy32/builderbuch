@@ -1,4 +1,26 @@
 import type webpack from 'webpack'
+import { ExtensionPlugins, ExtensionRules } from './extendability'
 
-export type Environment = 'prod' | 'stg' | 'dev'
-export type Mode = Exclude<webpack.Configuration['mode'], 'none' | undefined>
+export type BuildType = 'start' | 'build'
+
+export type BuildEnvironment = 'prod' | 'stg' | 'dev'
+export type BuildMode = Exclude<
+    webpack.Configuration['mode'],
+    'none' | undefined
+>
+
+export interface IBuildParameters {
+    type: BuildType
+    mode: BuildMode
+    environment: BuildEnvironment
+
+    entry: string
+    output: string
+    publicPath: string
+    basePath: string
+
+    analyze: boolean
+
+    extensionPlugins: ExtensionPlugins
+    extensionRules: ExtensionRules
+}

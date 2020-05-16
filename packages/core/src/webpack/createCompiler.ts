@@ -1,12 +1,13 @@
 import webpack from 'webpack'
-import createConfig from '../webpack/webpack.config'
-import { findClosestPackageFile } from './findClosestPackageFile'
+import { createConfig } from './webpack.config'
+import { findClosestPackageFile } from '../helper/findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { PossibleArgs } from '../types/args'
-import { loadExtensions } from './loadExtensions'
+import { IBuildParameters } from '../types/build'
 
-export const createCompiler = async (args: PossibleArgs) => {
+export const createCompiler = async (
+    args: Omit<IBuildParameters, 'publicPath'>
+) => {
     let publicPath = '/'
 
     const closestPackageJsonPath = await findClosestPackageFile(process.cwd())
@@ -21,12 +22,11 @@ export const createCompiler = async (args: PossibleArgs) => {
         }
     }
 
-    const fallback = () => []
-    const { plugins = fallback, rules = fallback } =
-        (await loadExtensions(args)) ?? {}
-
     const compiler = webpack(
-        await createConfig(publicPath, plugins, rules, args)
+        await createConfig({
+            publicPath,
+            ...args,
+        })
     )
     compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')
