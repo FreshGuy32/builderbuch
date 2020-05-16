@@ -6,7 +6,8 @@ import {
 import { PossibleArgs } from '../types/args'
 import { getAdditionalRules } from '../helper/getAdditional'
 import { RuleSetRule } from 'webpack'
-import { babelConfig } from './babelConfig'
+import { defaultBabelConfig } from './defaultBabelConfig'
+import { resolve } from 'path'
 
 export const rules = async (args: PossibleArgs) => {
     const additionalRules = (await getAdditionalRules(args)) ?? []
@@ -34,7 +35,7 @@ export const rules = async (args: PossibleArgs) => {
             use: {
                 loader: 'babel-loader',
                 options: {
-                    ...(await babelConfig(args)),
+                    ...defaultBabelConfig(resolve(args.basePath, '.babelrc')),
                     envName: args.environment,
                 },
             },

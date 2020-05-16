@@ -19,6 +19,7 @@
         "babel-jest": "^26.0.1",
         "eslint": "^7.0.0",
         "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-jest": "^23.11.0",
         "husky": "^4.2.3",
         "jest": "^26.0.1",
         "lerna": "^3.21.0",
@@ -35,7 +36,7 @@
         "pretty": "prettier --write",
         "prepublish": "yarn build",
         "commit": "commit",
-        "test": "yarn lerna run test --parallel"
+        "test": "jest"
     },
     "husky": {
         "hooks": {
