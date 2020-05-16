@@ -1,26 +1,24 @@
 import {
-    ExtendableAdditon,
-    ExtendableOverride,
-    OverrideableRuleNames,
+    ExtensionRules,
+    ExtensionRuleOverride,
+    ExtensionRuleAdditon,
 } from '../types/extendability'
 import { PossibleArgs } from '../types/args'
-import { getAdditionalRules } from '../helper/getAdditional'
 import { RuleSetRule } from 'webpack'
 import { defaultBabelConfig } from './defaultBabelConfig'
 import { resolve } from 'path'
 
-export const rules = async (args: PossibleArgs) => {
-    const additionalRules = (await getAdditionalRules(args)) ?? []
+export const rules = async (
+    extensionRules: ExtensionRules,
+    args: PossibleArgs
+) => {
+    const additionalRules = extensionRules(args)
 
     const additions = additionalRules.filter(
-        (value): value is ExtendableAdditon<RuleSetRule> =>
-            value.type === 'addition'
+        (value): value is ExtensionRuleAdditon => value.mode === 'addition'
     )
     const overrides = additionalRules.filter(
-        (
-            value
-        ): value is ExtendableOverride<RuleSetRule, OverrideableRuleNames> =>
-            value.type === 'override'
+        (value): value is ExtensionRuleOverride => value.mode === 'override'
     )
 
     const rules: RuleSetRule[] = [

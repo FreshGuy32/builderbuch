@@ -4,6 +4,7 @@ import { findClosestPackageFile } from './findClosestPackageFile'
 import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
 import { PossibleArgs } from '../types/args'
+import { loadExtensions } from './loadExtensions'
 
 export const createCompiler = async (args: PossibleArgs) => {
     let publicPath = '/'
@@ -20,7 +21,13 @@ export const createCompiler = async (args: PossibleArgs) => {
         }
     }
 
-    const compiler = webpack(await createConfig({ ...args, publicPath }))
+    const fallback = () => []
+    const { plugins = fallback, rules = fallback } =
+        (await loadExtensions(args)) ?? {}
+
+    const compiler = webpack(
+        await createConfig(publicPath, plugins, rules, args)
+    )
     compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')
     })

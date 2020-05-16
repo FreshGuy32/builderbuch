@@ -3,11 +3,13 @@ import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
 import { PossibleArgs } from '../types/args'
+import { ExtensionPlugins, ExtensionRules } from '../types/extendability'
 
 export default async (
-    args: PossibleArgs & {
-        publicPath: string
-    }
+    publicPath: string,
+    extensionPlugins: ExtensionPlugins,
+    extensionRules: ExtensionRules,
+    args: PossibleArgs
 ) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
         args.environment
@@ -18,13 +20,13 @@ export default async (
         output: {
             filename: '[name].[hash].js',
             path: resolve(args.basePath, args.output),
-            publicPath: args.publicPath,
+            publicPath: publicPath,
         },
         mode: args.mode,
         module: {
-            rules: await rules(args),
+            rules: await rules(extensionRules, args),
         },
-        plugins: await plugins(args),
+        plugins: await plugins(extensionPlugins, args),
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.css', '.pcss'],
         },

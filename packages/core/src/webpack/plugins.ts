@@ -4,16 +4,18 @@ import { resolve } from 'path'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { PossibleArgs } from '../types/args'
 import {
-    ExtendableAdditon,
-    ExtendableOverride,
-    OverrideablePluginNames,
+    ExtensionPlugins,
+    ExtensionPluginAdditon,
+    ExtensionPluginOverride,
 } from '../types/extendability'
-import { getAdditionalPlugins } from '../helper/getAdditional'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { pathExists } from 'fs-extra'
 
-export const plugins = async (args: PossibleArgs) => {
-    const additionalPlugins = (await getAdditionalPlugins(args)) ?? []
+export const plugins = async (
+    extensionRules: ExtensionPlugins,
+    args: PossibleArgs
+) => {
+    const additionalPlugins = extensionRules(args)
 
     const environmentPlugin = new EnvironmentPlugin({
         mode: args.mode,
@@ -35,8 +37,8 @@ export const plugins = async (args: PossibleArgs) => {
 
     const additions = additionalPlugins
         .filter(
-            (plugin): plugin is ExtendableAdditon<Plugin> =>
-                plugin.type === 'addition'
+            (plugin): plugin is ExtensionPluginAdditon =>
+                plugin.mode === 'addition'
         )
         .map(({ value: plugin }) => plugin)
 
@@ -47,10 +49,8 @@ export const plugins = async (args: PossibleArgs) => {
     ]
 
     const overrides = additionalPlugins.filter(
-        (
-            plugin
-        ): plugin is ExtendableOverride<Plugin, OverrideablePluginNames> =>
-            plugin.type === 'override'
+        (plugin): plugin is ExtensionPluginOverride =>
+            plugin.mode === 'override'
     )
 
     const htmlWebpackPlugin = overrides.find(
