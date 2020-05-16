@@ -26,7 +26,7 @@
     },
     "scripts": {
         "build": "tsc --project ../../tsconfig.json",
-        "prebuild": "rimraf src/**/*.{js,js.map,d.ts}",
+        "prebuild": "rimraf src/**/*.{js,js.map,d.ts} __test__/**/*.{js,js.map,d.ts}",
         "build-watch": "yarn build -w"
     },
     "bugs": {
