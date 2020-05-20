@@ -49,7 +49,7 @@
             "yarn lint-ts",
             "yarn pretty"
         ],
-        "*.{js,html,json}": [
+        "*.{js,html,json,md}": [
             "yarn pretty"
         ]
     },
