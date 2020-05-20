@@ -1,31 +1,22 @@
 # Readme
 
-This projects aim is to simplify usage of webpack and to abstract away the configuration. There are two seperate scripts, `start` and `build`, that can be called.
+This projects aim is to simplify usage of webpack and to abstract away the configuration.
+There are two seperate scripts, `start` and `build`, that can be called.
 
-By design the project doesn't include much more than `babel-loader`, `source-map-loader` and `BundleAnalyzerPlugin`. This is to be as flexible as possible, while offering ways to expand the capabilities via new rules and plugins. This is done via `plugins.js` and `rules.js` files. The types that these functions must adhere to, are called `AdditionalPlugins` and `AdditionalRules`.
+You can extend **builderbuch** by providing an optional `extension.js` file. This file can export `plugins` and/or `rules` functions that can provide **additons** or **overrides** to some of the internaly used rules and plugins.
 
-`plugins.ts`
+`extension.ts`
 
 ```ts
-import { AdditionalPlugins } from '@freshguy32/builderbuch_cli/src/extendability'
+import { ExtensionPlugins, ExtensionRules } from '@freshguy32/builderbuch_cli/src/extendability'
 
-const plugins: AdditionalPlugins = args => [
+export const plugins: ExtensionPlugins = (basePath, environment, mode) => [
     // ...
 ]
 
-export default plugins
-```
-
-`rules.ts`
-
-```ts
-import { AdditionalRules } from '@freshguy32/builderbuch_cli/src/extendability'
-
-const rules: AdditionalRules = args => [
+export const rules: ExtensionRules = (basePath, environment, mode) => [
     // ...
 ]
-
-export default rules
 ```
 
 These functions get all the arguments from `yargs` passed to it and returns an array.
