@@ -23,5 +23,5 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
     },
-    "include": ["packages/cli", "packages/core"]
+    "include": ["packages/cli", "packages/core", "packages/integration-test"]
 }

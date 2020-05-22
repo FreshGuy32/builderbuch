@@ -1,0 +1,11 @@
+[prod]
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+
+[stg]
+last 2 Chrome versions
+
+[dev]
+last 2 Chrome versions
