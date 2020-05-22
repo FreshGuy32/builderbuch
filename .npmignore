@@ -1,3 +1,4 @@
-src
+/src/**/*.ts
+/src/**/*.tsx
 .vscode
 *.log
