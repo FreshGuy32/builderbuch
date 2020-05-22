@@ -1,33 +1,10 @@
 import webpack from 'webpack'
 import { createConfig } from './webpack.config'
-import { findClosestPackageFile } from '../helper/findClosestPackageFile'
-import { readFile } from 'fs-extra'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
 import { IBuildParameters } from '../types/build'
 
-export const createCompiler = async (
-    args: Omit<IBuildParameters, 'publicPath'>
-) => {
-    let publicPath = '/'
-
-    const closestPackageJsonPath = await findClosestPackageFile(process.cwd())
-    if (closestPackageJsonPath) {
-        const content = await readFile(closestPackageJsonPath)
-
-        const stringContent = content.toString()
-        const jsonContent = JSON.parse(stringContent) as { homepage?: string }
-
-        if (jsonContent.homepage) {
-            publicPath = jsonContent.homepage
-        }
-    }
-
-    const compiler = webpack(
-        await createConfig({
-            publicPath,
-            ...args,
-        })
-    )
+export const createCompiler = async (args: IBuildParameters) => {
+    const compiler = webpack(await createConfig(args))
     compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')
     })

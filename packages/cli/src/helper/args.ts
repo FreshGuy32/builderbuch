@@ -18,6 +18,11 @@ const args = yargs.options({
         alias: 'o',
         description: 'Path for the webpack outputs.',
     },
+    publicPath: {
+        type: 'string',
+        default: '/' as string,
+        description: 'Public path that will be used in the webpack config.',
+    },
 
     extension: {
         type: 'string',
