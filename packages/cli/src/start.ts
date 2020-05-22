@@ -8,7 +8,7 @@ import { loadExtensions } from './helper/loadExtensions'
 import { resolve } from 'path'
 ;(async () => {
     const extension = await loadExtensions(
-        resolve(argv.basePath, 'extension.js')
+        resolve(argv.basePath, argv.extension)
     )
 
     const fallback = () => []

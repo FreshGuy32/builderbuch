@@ -6,7 +6,7 @@ import { resolve } from 'path'
 import { createCompiler } from '@freshguy32/builderbuch_core/src/webpack/createCompiler'
 ;(async () => {
     const extension = await loadExtensions(
-        resolve(argv.basePath, 'extension.js')
+        resolve(argv.basePath, argv.extension)
     )
 
     const fallback = () => []
