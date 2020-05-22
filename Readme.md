@@ -1,32 +1,23 @@
 # Readme
 
-This projects aim is to simplify usage of webpack and to abstract away the configuration. There are two seperate scripts, `start` and `build`, that can be called.
+This projects aim is to simplify usage of webpack and to abstract away the configuration.
+There are two seperate scripts, `start` and `build`, that can be called.
 
-By design the project doesn't include much more than `babel-loader`, `source-map-loader` and `BundleAnalyzerPlugin`. This is to be as flexible as possible, while offering ways to expand the capabilities via new rules and plugins. This is done via `plugins.js` and `rules.js` files. The types that these functions must adhere to, are called `AdditionalPlugins` and `AdditionalRules`.
+`build` is used to create a simple build of the project. It can also be started in **watch** mode. \
+`start` is used to start an instance of `webpack-dev-server`. If available it will start on port **3000**, otherwise it searches automatically for an available port. If no `webpack-html-plugin` is provided via `extension.js`, one will be injected for you with all the default options.
 
-`plugins.ts`
+You can extend **builderbuch** by providing an optional `extension.js` file. This file can export `plugins` and/or `rules` functions that can provide **additons** or **overrides** to some of the internaly used rules and plugins.
+
+`extension.ts`
 
 ```ts
-import { AdditionalPlugins } from '@freshguy32/builderbuch_cli/src/extendability'
+import { ExtensionPlugins, ExtensionRules } from '@freshguy32/builderbuch_cli/src/extendability'
 
-const plugins: AdditionalPlugins = args => [
+export const plugins: ExtensionPlugins = (basePath, environment, mode) => [
     // ...
 ]
 
-export default plugins
-```
-
-`rules.ts`
-
-```ts
-import { AdditionalRules } from '@freshguy32/builderbuch_cli/src/extendability'
-
-const rules: AdditionalRules = args => [
+export const rules: ExtensionRules = (basePath, environment, mode) => [
     // ...
 ]
-
-export default rules
 ```
-
-These functions get all the arguments from `yargs` passed to it and returns an array.
-This array either contains `override`s or `addition`s. `override`s replace the specified **rule** or **plugin**. `addition`s are additional **rules** and **plugins** that aren't builtin and get added from the user side.

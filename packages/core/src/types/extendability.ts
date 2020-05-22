@@ -45,3 +45,8 @@ export type ExtensionRules = ExtensionFn<ExtensionRuleValues>
 
 export type ExtensionValues = ExtensionPluginValues | ExtensionRuleValues
 export type ExtensionFunctions = ExtensionPlugins | ExtensionRules
+
+export interface IExtensionModule {
+    plugins?: ExtensionPlugins
+    rules?: ExtensionRules
+}
