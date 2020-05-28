@@ -25,7 +25,7 @@
         "directory": "packages/cli"
     },
     "scripts": {
-        "build": "tsc --project ../../tsconfig.json",
+        "build": "tsc --project ./tsconfig.json",
         "prebuild": "rimraf src/**/*.{js,js.map,d.ts} __tests__/**/*.{js,js.map,d.ts}",
         "build-watch": "yarn build -w"
     },
@@ -39,5 +39,6 @@
     },
     "devDependencies": {
         "@types/yargs": "^15.0.5"
-    }
+    },
+    "gitHead": "69e22f072864d88f8a324303782afc204f65067b"
 }

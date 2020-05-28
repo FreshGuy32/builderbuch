@@ -7,6 +7,8 @@
         "target": "es2018",
         "downlevelIteration": true,
 
+        "jsx": "react",
+
         "strict": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
@@ -22,7 +24,5 @@
 
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
-    },
-    "include": ["packages/cli", "packages/core", "packages/test"],
-    "exclude": ["node_modules"]
+    }
 }

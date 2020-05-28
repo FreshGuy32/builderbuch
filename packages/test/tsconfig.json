@@ -1,12 +1,5 @@
 {
-    "compilerOptions": {
-        "strict": true,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitThis": true,
-        "jsx": "react",
-
-        "lib": ["ESNext", "DOM"]
-    }
+    "extends": "../../tsconfig.json",
+    "compilerOptions": { "jsx": "react", "lib": ["ESNext", "DOM"] },
+    "include": ["src"]
 }

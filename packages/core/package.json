@@ -21,7 +21,7 @@
         "directory": "packages/core"
     },
     "scripts": {
-        "build": "tsc --project ../../tsconfig.json",
+        "build": "tsc --project ./tsconfig.json",
         "prebuild": "rimraf src/**/*.{js,js.map,d.ts} __tests__/**/*.{js,js.map,d.ts}",
         "build-watch": "yarn build -w"
     },
@@ -50,5 +50,6 @@
         "@types/react-dev-utils": "9.0.4",
         "@types/webpack-bundle-analyzer": "2.13.3",
         "@types/webpack-dev-server": "3.10.1"
-    }
+    },
+    "gitHead": "69e22f072864d88f8a324303782afc204f65067b"
 }
