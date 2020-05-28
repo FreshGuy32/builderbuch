@@ -23,6 +23,6 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
     },
-    "include": ["packages/cli", "packages/core"],
-    "exclude": ["packages/integration-test"]
+    "include": ["packages/cli", "packages/core", "packages/test"],
+    "exclude": ["node_modules"]
 }

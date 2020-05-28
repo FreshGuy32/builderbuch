@@ -1,12 +1,11 @@
 {
-    "name": "@freshguy32/builderbuch_integration-test",
+    "name": "@freshguy32/builderbuch_test",
     "version": "0.2.0",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
     "homepage": "https://github.com/FreshGuy32/builderbuch#readme",
     "license": "MIT",
-    "main": "lib/integration-test.js",
-    "private": true,
+    "main": "lib/builderbuch_test.js",
     "directories": {
         "lib": "lib",
         "test": "__tests__"

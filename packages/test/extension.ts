@@ -1,7 +1,5 @@
-import {
-    ExtensionPlugins,
-    ExtensionRules,
-} from '@freshguy32/builderbuch_cli/src/extendability'
+import { ExtensionPlugins } from '@freshguy32/builderbuch_cli/src/extendability'
+
 import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
 
