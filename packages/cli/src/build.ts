@@ -4,7 +4,13 @@ import { onSigint } from './helper/onSigint'
 import { loadExtensions } from './helper/loadExtensions'
 import { resolve } from 'path'
 import { createCompiler } from '@freshguy32/builderbuch_core/src/webpack/createCompiler'
+import { validateFoundConfigs } from './helper/validateFoundConfigs'
+import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
 ;(async () => {
+    const configFiles = validateFoundConfigs(
+        await checkIfConfigFilesExist(argv.basePath)
+    )
+
     const extension = await loadExtensions(
         resolve(argv.basePath, argv.extension)
     )
@@ -15,6 +21,7 @@ import { createCompiler } from '@freshguy32/builderbuch_core/src/webpack/createC
         type: 'build',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,
+        configFiles,
     })
 
     return new Promise(resolve => {

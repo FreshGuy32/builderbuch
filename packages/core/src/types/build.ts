@@ -1,5 +1,6 @@
 import type webpack from 'webpack'
 import { ExtensionPlugins, ExtensionRules } from './extendability'
+import { ConfigFiles } from './configFiles'
 
 export type BuildType = 'start' | 'build'
 
@@ -23,4 +24,6 @@ export interface IBuildParameters {
 
     extensionPlugins: ExtensionPlugins
     extensionRules: ExtensionRules
+
+    configFiles: ConfigFiles
 }

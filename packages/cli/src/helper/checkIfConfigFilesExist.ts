@@ -1,7 +1,11 @@
 import { pathExists } from 'fs-extra'
 import { resolve } from 'path'
+import {
+    ConfigFileTypes,
+    IConfigFileValue,
+    ConfigFiles,
+} from '@freshguy32/builderbuch_core/src/types/configFiles'
 
-type ConfigFileTypes = 'babel' | 'ts' | 'eslint'
 const configFileNames: [ConfigFileTypes, ...string[]][] = [
     ['babel', '.babelrc', 'babel.config.json', '.babelrc.json'],
     ['ts', 'tsconfig.json'],
@@ -15,6 +19,22 @@ const configFileNames: [ConfigFileTypes, ...string[]][] = [
         '.eslintrc',
     ],
 ]
+
+const fallbackConfigPaths: Record<ConfigFileTypes, IConfigFileValue> = {
+    babel: {
+        type: 'fallback',
+        path: resolve(__dirname, '../assets', '.eslintrc.json'),
+    },
+    eslint: {
+        type: 'fallback',
+        path: resolve(__dirname, '../assets', '.babelrc'),
+    },
+    ts: {
+        type: 'fallback',
+        path: resolve(__dirname, '../assets', 'tsconfig.json'),
+    },
+}
+
 export const checkIfConfigFilesExist = async (basePath: string) => {
     const ret = await Promise.all(
         configFileNames.map(async ([type, ...names]) => {
@@ -26,12 +46,18 @@ export const checkIfConfigFilesExist = async (basePath: string) => {
                 })
             )
 
+            const paths = variants
+                .filter(([, exists]) => exists)
+                .map<IConfigFileValue>(([path]) => ({
+                    type: 'normal',
+                    path,
+                }))
             return [
                 type,
-                variants.filter(([, exists]) => exists).map(([path]) => path),
+                paths.length > 0 ? paths : [fallbackConfigPaths[type]],
             ] as const
         })
     )
 
-    return Object.fromEntries(ret) as Record<ConfigFileTypes, string[]>
+    return Object.fromEntries(ret) as ConfigFiles
 }

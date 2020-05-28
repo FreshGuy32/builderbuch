@@ -4,7 +4,6 @@ import {
 } from '../types/extendability'
 import { RuleSetRule } from 'webpack'
 import { defaultBabelConfig } from './defaultBabelConfig'
-import { resolve } from 'path'
 import { IBuildParameters } from '../types/build'
 
 export const rules = async ({
@@ -12,9 +11,10 @@ export const rules = async ({
     environment,
     extensionRules,
     mode,
+    configFiles,
 }: Pick<
     IBuildParameters,
-    'type' | 'basePath' | 'environment' | 'mode' | 'extensionRules'
+    'basePath' | 'environment' | 'mode' | 'extensionRules' | 'configFiles'
 >) => {
     const additionalRules = extensionRules(basePath, environment, mode)
 
@@ -36,7 +36,7 @@ export const rules = async ({
             exclude: /node_modules/,
             loader: 'babel-loader',
             options: {
-                ...defaultBabelConfig(resolve(basePath, '.babelrc')),
+                ...defaultBabelConfig(configFiles.babel[0].path),
                 envName: environment,
             },
         },

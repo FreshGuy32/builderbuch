@@ -6,7 +6,13 @@ import { argv } from './helper/args'
 import { createCompiler } from '@freshguy32/builderbuch_core/src/webpack/createCompiler'
 import { loadExtensions } from './helper/loadExtensions'
 import { resolve } from 'path'
+import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
+import { validateFoundConfigs } from './helper/validateFoundConfigs'
 ;(async () => {
+    const configFiles = validateFoundConfigs(
+        await checkIfConfigFilesExist(argv.basePath)
+    )
+
     const extension = await loadExtensions(
         resolve(argv.basePath, argv.extension)
     )
@@ -17,6 +23,7 @@ import { resolve } from 'path'
         type: 'start',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,
+        configFiles,
     })
     const port = await choosePort('', 3000)
     if (!port) {
