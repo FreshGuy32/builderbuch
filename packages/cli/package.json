@@ -34,7 +34,7 @@
     },
     "dependencies": {
         "@freshguy32/builderbuch_core": "^0.3.2",
-        "chalk": "^4.0.0",
+        "chalk": "^4.1.0",
         "yargs": "^15.3.1"
     },
     "devDependencies": {
