@@ -34,10 +34,15 @@ export const plugins = async ({
     })
 
     const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
-        tsconfig: configFiles.ts[0].path,
-        eslint: true,
-        eslintOptions: {
-            configFile: configFiles.eslint[0].path,
+        typescript: {
+            configFile: configFiles.ts[0].path,
+        },
+        eslint: {
+            enabled: true,
+            files: 'src/**/*',
+            options: {
+                configFile: configFiles.eslint[0].path,
+            },
         },
     })
 
@@ -75,7 +80,7 @@ export const plugins = async ({
         plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
-            }) as Plugin
+            }) //as Plugin
         )
     }
 
