@@ -30,6 +30,7 @@ export const rules = async ({
             test: /\.(js|ts)x?$/i,
             use: ['source-map-loader'],
             enforce: 'pre',
+            exclude: 'node_modules',
         },
         {
             test: /\.(js|ts)x?$/i,
