@@ -1,6 +1,6 @@
 {
     "name": "@freshguy32/builderbuch_test",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
     "homepage": "https://github.com/FreshGuy32/builderbuch#readme",
@@ -28,7 +28,7 @@
         "url": "https://github.com/FreshGuy32/builderbuch/issues"
     },
     "dependencies": {
-        "@freshguy32/builderbuch_cli": "^0.4.0",
+        "@freshguy32/builderbuch_cli": "^0.4.1",
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
     },
