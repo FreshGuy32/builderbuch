@@ -1,4 +1,4 @@
-import type webpack from 'webpack'
+import webpack from 'webpack'
 import { ExtensionPlugins, ExtensionRules } from './extendability'
 import { ConfigFiles } from './configFiles'
 
