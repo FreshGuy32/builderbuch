@@ -10,7 +10,8 @@
         "test": "__tests__"
     },
     "files": [
-        "src"
+        "src/**/*.js",
+        "src/**/*.d.ts"
     ],
     "publishConfig": {
         "registry": "https://npm.pkg.github.com/"
