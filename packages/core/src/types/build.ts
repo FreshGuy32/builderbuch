@@ -4,11 +4,11 @@ import { ConfigFiles } from './configFiles'
 
 export type BuildType = 'start' | 'build'
 
-export type BuildEnvironment = 'prod' | 'stg' | 'dev'
 export type BuildMode = Exclude<
     webpack.Configuration['mode'],
     'none' | undefined
 >
+export type BuildEnvironment = BuildMode | 'staging'
 
 export interface IBuildParameters {
     type: BuildType
