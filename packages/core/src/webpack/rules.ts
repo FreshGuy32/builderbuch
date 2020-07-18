@@ -16,7 +16,7 @@ export const rules = async ({
     IBuildParameters,
     'basePath' | 'environment' | 'mode' | 'extensionRules' | 'configFiles'
 >) => {
-    const additionalRules = extensionRules(basePath, environment, mode)
+    const additionalRules = extensionRules({ basePath, environment, mode })
 
     const additions = additionalRules.filter(
         (value): value is ExtensionRuleAdditon => value.mode === 'addition'

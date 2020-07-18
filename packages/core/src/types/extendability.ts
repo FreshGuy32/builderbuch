@@ -1,4 +1,5 @@
 import { Plugin, RuleSetRule } from 'webpack'
+import { IBuildParameters } from './build'
 
 export type ExtensionType = 'plugins' | 'rules'
 
@@ -35,9 +36,7 @@ export type ExtensionPluginValues =
 export type ExtensionRuleValues = ExtensionRuleAdditon | ExtensionRuleOverride
 
 type ExtensionFn<T> = (
-    basePath: string,
-    environment: string,
-    mode: string
+    args: Pick<IBuildParameters, 'basePath' | 'environment' | 'mode'>
 ) => T[]
 
 export type ExtensionPlugins = ExtensionFn<ExtensionPluginValues>

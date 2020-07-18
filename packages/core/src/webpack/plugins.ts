@@ -26,7 +26,7 @@ export const plugins = async ({
     | 'type'
     | 'configFiles'
 >) => {
-    const additionalPlugins = extensionPlugins(basePath, environment, mode)
+    const additionalPlugins = extensionPlugins({ basePath, environment, mode })
 
     const environmentPlugin = new EnvironmentPlugin({
         mode: mode,
