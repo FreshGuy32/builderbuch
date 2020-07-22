@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { ConfigFiles } from '@freshguy32/builderbuch_core/src/types/configFiles'
+import { ConfigFiles } from '@builderbuch/core/src/types/configFiles'
 
 export const validateFoundConfigs = (configFiles: ConfigFiles) => {
     const copy = { ...configFiles }

@@ -1,4 +1,4 @@
-import { IBuildParameters } from '@freshguy32/builderbuch_core/src/types/build'
+import { IBuildParameters } from '@builderbuch/core/src/types/build'
 
 export interface IArguments
     extends Omit<

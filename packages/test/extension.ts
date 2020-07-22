@@ -1,4 +1,4 @@
-import { ExtensionPlugins } from '@freshguy32/builderbuch_cli/src/extendability'
+import { ExtensionPlugins } from '@builderbuch/cli/src/extendability'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'

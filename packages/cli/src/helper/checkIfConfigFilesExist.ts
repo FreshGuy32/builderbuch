@@ -4,7 +4,7 @@ import {
     ConfigFileTypes,
     IConfigFileValue,
     ConfigFiles,
-} from '@freshguy32/builderbuch_core/src/types/configFiles'
+} from '@builderbuch/core/src/types/configFiles'
 
 const configFileNames: [ConfigFileTypes, ...string[]][] = [
     ['babel', '.babelrc', 'babel.config.json', '.babelrc.json'],

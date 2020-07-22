@@ -11,7 +11,7 @@ You can extend **builderbuch** by providing an optional `extension.js` file. Thi
 `extension.ts`
 
 ```ts
-import { ExtensionPlugins, ExtensionRules } from '@freshguy32/builderbuch_cli/src/extendability'
+import { ExtensionPlugins, ExtensionRules } from '@builderbuch/cli/src/extendability'
 
 export const plugins: ExtensionPlugins = (basePath, environment, mode) => [
     // ...

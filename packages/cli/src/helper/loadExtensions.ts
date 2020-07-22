@@ -1,5 +1,5 @@
 import { pathExists } from 'fs-extra'
-import { IExtensionModule } from '@freshguy32/builderbuch_core/src/types/extendability'
+import { IExtensionModule } from '@builderbuch/core/src/types/extendability'
 
 export const loadExtensions = async (
     path: string

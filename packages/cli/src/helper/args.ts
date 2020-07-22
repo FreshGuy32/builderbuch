@@ -2,7 +2,7 @@ import * as yargs from 'yargs'
 import {
     BuildEnvironment,
     BuildMode,
-} from '@freshguy32/builderbuch_core/src/types/build'
+} from '@builderbuch/core/src/types/build'
 import { IArguments } from '../types/args'
 
 const args = yargs.options({

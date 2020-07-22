@@ -3,7 +3,7 @@ import { argv } from './helper/args'
 import { onSigint } from './helper/onSigint'
 import { loadExtensions } from './helper/loadExtensions'
 import { resolve } from 'path'
-import { createCompiler } from '@freshguy32/builderbuch_core/src/webpack/createCompiler'
+import { createCompiler } from '@builderbuch/core/src/webpack/createCompiler'
 import { validateFoundConfigs } from './helper/validateFoundConfigs'
 import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
 ;(async () => {
