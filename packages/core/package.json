@@ -13,6 +13,9 @@
         "src/**/*.js",
         "src/**/*.d.ts"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "repository": {
         "type": "git",
         "url": "ssh://git@github.com/FreshGuy32/builderbuch.git",
