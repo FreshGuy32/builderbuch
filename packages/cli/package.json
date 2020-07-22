@@ -15,7 +15,8 @@
     },
     "files": [
         "src/**/*.js",
-        "src/**/*.d.ts"
+        "src/**/*.d.ts",
+        "src/assets"
     ],
     "publishConfig": {
         "access": "public"
