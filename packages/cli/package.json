@@ -35,12 +35,12 @@
         "url": "https://github.com/FreshGuy32/builderbuch/issues"
     },
     "dependencies": {
-        "@builderbuch/core": "^0.7.4",
+        "@builderbuch/core": "0.7.4",
         "chalk": "4.1.0",
-        "yargs": "16.1.0"
+        "yargs": "16.2.0"
     },
     "devDependencies": {
-        "@babel/preset-typescript": "^7.12.7",
-        "@types/yargs": "^15.0.12"
+        "@babel/preset-typescript": "7.12.7",
+        "@types/yargs": "15.0.12"
     }
 }

@@ -37,7 +37,7 @@ import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
 
             onSigint(() => watcher.close(() => resolve(process.exit())))
         } else {
-            compiler.run(() => resolve())
+            compiler.run(() => resolve(undefined))
         }
     }).then()
 })()

@@ -22,15 +22,17 @@
         "url": "git+https://github.com/FreshGuy32/builderbuch.git"
     },
     "scripts": {
-        "test": "echo \"Error: run tests from root\" && exit 1"
+        "transpile-extensions": "tsc extension.ts --esModuleInterop",
+        "start": "yarn transpile-extensions && bb-start",
+        "build": "yarn transpile-extensions && bb-build"
     },
     "bugs": {
         "url": "https://github.com/FreshGuy32/builderbuch/issues"
     },
     "dependencies": {
-        "@babel/core": "^7.12.10",
-        "@babel/preset-typescript": "^7.12.7",
-        "@builderbuch/cli": "^0.7.4",
+        "@babel/core": "7.12.10",
+        "@babel/preset-typescript": "7.12.7",
+        "@builderbuch/cli": "0.7.4",
         "react": "17.0.1",
         "react-dom": "17.0.1"
     },
