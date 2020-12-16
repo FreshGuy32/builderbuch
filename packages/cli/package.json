@@ -41,6 +41,6 @@
     },
     "devDependencies": {
         "@babel/preset-typescript": "^7.12.7",
-        "@types/yargs": "^15.0.9"
+        "@types/yargs": "^15.0.12"
     }
 }
