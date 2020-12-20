@@ -6,7 +6,7 @@ import {
     ExtensionPluginOverride,
 } from '../types/extendability'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { IBuildParameters } from '../types/build'
+import { BuildParameters } from '../types/build'
 
 export const plugins = async ({
     type,
@@ -17,7 +17,7 @@ export const plugins = async ({
     mode,
     configFiles,
 }: Pick<
-    IBuildParameters,
+    BuildParameters,
     | 'analyze'
     | 'basePath'
     | 'environment'

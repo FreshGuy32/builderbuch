@@ -1,9 +1,9 @@
 import webpack from 'webpack'
 import { createConfig } from './webpack.config'
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages'
-import { IBuildParameters } from '../types/build'
+import { BuildParameters } from '../types/build'
 
-export const createCompiler = async (args: IBuildParameters) => {
+export const createCompiler = async (args: BuildParameters) => {
     const compiler = webpack(await createConfig(args))
     compiler.hooks.invalid.tap('invalid', () => {
         console.log('Compiling...')

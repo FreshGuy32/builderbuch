@@ -1,9 +1,9 @@
 import { pathExists } from 'fs-extra'
-import { IExtensionModule } from '@builderbuch/core/src/types/extendability'
+import { ExtensionModule } from '@builderbuch/core/src/types/extendability'
 
 export const loadExtensions = async (
     path: string
-): Promise<IExtensionModule | undefined> => {
+): Promise<ExtensionModule | undefined> => {
     if (!(await pathExists(path))) {
         return
     }

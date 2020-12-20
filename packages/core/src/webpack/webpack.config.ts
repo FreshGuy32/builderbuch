@@ -2,14 +2,14 @@ import { Configuration } from 'webpack'
 import { rules } from './rules'
 import { plugins } from './plugins'
 import { resolve } from 'path'
-import { IBuildParameters } from '../types/build'
+import { BuildParameters } from '../types/build'
 
 export const createConfig = async ({
     entry,
     output,
     outputName,
     ...args
-}: IBuildParameters) => {
+}: BuildParameters) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
         args.environment
 

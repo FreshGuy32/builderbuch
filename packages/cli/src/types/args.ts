@@ -1,8 +1,8 @@
-import { IBuildParameters } from '@builderbuch/core/src/types/build'
+import { BuildParameters } from '@builderbuch/core/src/types/build'
 
-export interface IArguments
+export interface Arguments
     extends Omit<
-        IBuildParameters,
+        BuildParameters,
         'type' | 'extensionPlugins' | 'extensionRules' | 'configFiles'
     > {
     extension: string

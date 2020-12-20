@@ -10,7 +10,7 @@ export type BuildMode = Exclude<
 >
 export type BuildEnvironment = BuildMode | 'staging'
 
-export interface IBuildParameters {
+export interface BuildParameters {
     type: BuildType
     mode: BuildMode
     environment: BuildEnvironment

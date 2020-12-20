@@ -1,5 +1,5 @@
 import { Plugin, RuleSetRule } from 'webpack'
-import { IBuildParameters } from './build'
+import { BuildParameters } from './build'
 
 export type ExtensionType = 'plugins' | 'rules'
 
@@ -32,7 +32,7 @@ export type ExtensionPluginValues =
 export type ExtensionRuleValues = ExtensionRuleAdditon | ExtensionRuleOverride
 
 type ExtensionFn<T> = (
-    args: Pick<IBuildParameters, 'basePath' | 'environment' | 'mode'>
+    args: Pick<BuildParameters, 'basePath' | 'environment' | 'mode'>
 ) => T[]
 
 export type ExtensionPlugins = ExtensionFn<ExtensionPluginValues>
@@ -41,7 +41,7 @@ export type ExtensionRules = ExtensionFn<ExtensionRuleValues>
 export type ExtensionValues = ExtensionPluginValues | ExtensionRuleValues
 export type ExtensionFunctions = ExtensionPlugins | ExtensionRules
 
-export interface IExtensionModule {
+export interface ExtensionModule {
     plugins?: ExtensionPlugins
     rules?: ExtensionRules
 }

@@ -4,7 +4,7 @@ import {
 } from '../types/extendability'
 import { RuleSetRule } from 'webpack'
 import { defaultBabelConfig } from './defaultBabelConfig'
-import { IBuildParameters } from '../types/build'
+import { BuildParameters } from '../types/build'
 
 export const rules = async ({
     basePath,
@@ -13,7 +13,7 @@ export const rules = async ({
     mode,
     configFiles,
 }: Pick<
-    IBuildParameters,
+    BuildParameters,
     'basePath' | 'environment' | 'mode' | 'extensionRules' | 'configFiles'
 >) => {
     const additionalRules = extensionRules({ basePath, environment, mode })

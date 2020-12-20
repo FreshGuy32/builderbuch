@@ -1,6 +1,6 @@
 import * as yargs from 'yargs'
 import { BuildEnvironment, BuildMode } from '@builderbuch/core/src/types/build'
-import { IArguments } from '../types/args'
+import { Arguments } from '../types/args'
 
 const args = yargs.options({
     entry: {
@@ -65,4 +65,4 @@ const args = yargs.options({
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
-export const argv: Readonly<IArguments> = args.argv
+export const argv: Readonly<Arguments> = args.argv

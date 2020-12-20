@@ -2,7 +2,7 @@ import { pathExists } from 'fs-extra'
 import { resolve } from 'path'
 import {
     ConfigFileTypes,
-    IConfigFileValue,
+    ConfigFileValue,
     ConfigFiles,
 } from '@builderbuch/core/src/types/configFiles'
 
@@ -20,7 +20,7 @@ const configFileNames: [ConfigFileTypes, ...string[]][] = [
     ],
 ]
 
-const fallbackConfigPaths: Record<ConfigFileTypes, IConfigFileValue> = {
+const fallbackConfigPaths: Record<ConfigFileTypes, ConfigFileValue> = {
     babel: {
         type: 'fallback',
         path: resolve(__dirname, '../assets', '.eslintrc.json'),
@@ -48,7 +48,7 @@ export const checkIfConfigFilesExist = async (basePath: string) => {
 
             const paths = variants
                 .filter(([, exists]) => exists)
-                .map<IConfigFileValue>(([path]) => ({
+                .map<ConfigFileValue>(([path]) => ({
                     type: 'normal',
                     path,
                 }))
