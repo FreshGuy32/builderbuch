@@ -17,6 +17,7 @@ export interface IBuildParameters {
 
     entry: string
     output: string
+    outputName: string
     publicPath: string
     basePath: string
 
