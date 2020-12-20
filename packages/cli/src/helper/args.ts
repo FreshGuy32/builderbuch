@@ -1,8 +1,5 @@
 import * as yargs from 'yargs'
-import {
-    BuildEnvironment,
-    BuildMode,
-} from '@builderbuch/core/src/types/build'
+import { BuildEnvironment, BuildMode } from '@builderbuch/core/src/types/build'
 import { IArguments } from '../types/args'
 
 const args = yargs.options({
@@ -17,6 +14,13 @@ const args = yargs.options({
         default: 'dist' as string,
         alias: 'o',
         description: 'Path for the webpack outputs.',
+    },
+    outputName: {
+        type: 'string',
+        default: '[name].[hash].js',
+        alias: 'n',
+        description:
+            'Name for output that can include all the placeholders of webpack.',
     },
     publicPath: {
         type: 'string',
