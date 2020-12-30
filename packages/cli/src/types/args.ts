@@ -3,7 +3,11 @@ import { BuildParameters } from '@builderbuch/core/src/types/build'
 export interface Arguments
     extends Omit<
         BuildParameters,
-        'type' | 'extensionPlugins' | 'extensionRules' | 'configFiles'
+        | 'type'
+        | 'extensionPlugins'
+        | 'extensionRules'
+        | 'extensionOptimization'
+        | 'configFiles'
     > {
     extension: string
     watch: boolean

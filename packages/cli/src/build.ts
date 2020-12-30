@@ -6,6 +6,7 @@ import { resolve } from 'path'
 import { createCompiler } from '@builderbuch/core/src/webpack/createCompiler'
 import { validateFoundConfigs } from './helper/validateFoundConfigs'
 import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
+import { defaultOptimization } from '@builderbuch/core/src/webpack/optimization'
 ;(async () => {
     const configFiles = validateFoundConfigs(
         await checkIfConfigFilesExist(argv.basePath)
@@ -21,6 +22,7 @@ import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
         type: 'build',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,
+        extensionOptimization: extension?.optimization ?? defaultOptimization,
         configFiles,
     })
 

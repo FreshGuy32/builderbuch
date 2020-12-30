@@ -1,5 +1,9 @@
 import * as webpack from 'webpack'
-import { ExtensionPlugins, ExtensionRules } from './extendability'
+import {
+    ExtensionOptimization,
+    ExtensionPlugins,
+    ExtensionRules,
+} from './extendability'
 import { ConfigFiles } from './configFiles'
 
 export type BuildType = 'start' | 'build'
@@ -25,6 +29,7 @@ export interface BuildParameters {
 
     extensionPlugins: ExtensionPlugins
     extensionRules: ExtensionRules
+    extensionOptimization: ExtensionOptimization
 
     configFiles: ConfigFiles
 }

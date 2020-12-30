@@ -8,6 +8,7 @@ export const createConfig = async ({
     entry,
     output,
     outputName,
+    extensionOptimization,
     ...args
 }: BuildParameters) => {
     process.env.BABEL_ENV = process.env.NODE_ENV = process.env.BROWSERSLIST_ENV =
@@ -23,12 +24,13 @@ export const createConfig = async ({
         },
         mode: args.mode,
         module: {
-            rules: await rules(args),
+            rules: rules(args),
         },
-        plugins: await plugins(args),
+        plugins: plugins(args),
         resolve: {
             extensions: ['.tsx', '.ts', '.js', '.css', '.pcss'],
         },
+        optimization: extensionOptimization(args),
     }
 
     return config

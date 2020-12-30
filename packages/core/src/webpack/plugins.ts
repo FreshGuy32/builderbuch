@@ -8,7 +8,7 @@ import {
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BuildParameters } from '../types/build'
 
-export const plugins = async ({
+export const plugins = ({
     type,
     analyze,
     basePath,

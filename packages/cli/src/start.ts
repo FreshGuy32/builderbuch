@@ -8,6 +8,7 @@ import { loadExtensions } from './helper/loadExtensions'
 import { resolve } from 'path'
 import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
 import { validateFoundConfigs } from './helper/validateFoundConfigs'
+import { defaultOptimization } from '@builderbuch/core/src/webpack/optimization'
 ;(async () => {
     const configFiles = validateFoundConfigs(
         await checkIfConfigFilesExist(argv.basePath)
@@ -23,6 +24,7 @@ import { validateFoundConfigs } from './helper/validateFoundConfigs'
         type: 'start',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,
+        extensionOptimization: extension?.optimization ?? defaultOptimization,
         configFiles,
     })
     const port = await choosePort('', 3000)

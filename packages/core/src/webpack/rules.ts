@@ -6,7 +6,7 @@ import { RuleSetRule } from 'webpack'
 import { defaultBabelConfig } from './defaultBabelConfig'
 import { BuildParameters } from '../types/build'
 
-export const rules = async ({
+export const rules = ({
     basePath,
     environment,
     extensionRules,
