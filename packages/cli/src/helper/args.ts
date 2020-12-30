@@ -17,7 +17,7 @@ const args = yargs.options({
     },
     outputName: {
         type: 'string',
-        default: '[name].[hash].js',
+        default: '[name].[contenthash].js',
         alias: 'n',
         description:
             'Name for output that can include all the placeholders of webpack.',
