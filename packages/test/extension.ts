@@ -1,4 +1,7 @@
-import { ExtensionPlugins } from '@builderbuch/cli/src/extendability'
+import {
+    ExtensionOptimization,
+    ExtensionPlugins,
+} from '@builderbuch/cli/src/extendability'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
@@ -14,3 +17,5 @@ export const plugins: ExtensionPlugins = ({ basePath }) => [
         }),
     },
 ]
+
+// export const optimization: ExtensionOptimization = () => ({})
