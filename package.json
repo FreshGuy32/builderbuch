@@ -35,7 +35,7 @@
         "prepublish": "yarn build",
         "commit": "commit",
         "test": "jest",
-        "postinstall": "husky install && yarn husky add .husky/pre-commit 'yarn lint-staged' && yarn husky add .husky/commit-msg 'yarn commitlint --edit $1'",
+        "postinstall": "rm -rf .husky && yarn husky install && yarn husky add .husky/pre-commit 'yarn lint-staged' && yarn husky add .husky/commit-msg 'yarn commitlint --edit $1'",
         "prepublishOnly": "pinst --disable",
         "postpublish": "pinst --enable"
     },
