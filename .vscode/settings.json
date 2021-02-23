@@ -6,6 +6,7 @@
         "**/src/**/*.js.map": true,
         "**/__tests__/**/*.d.ts": true,
         "**/__tests__/**/*.js": true,
-        "**/__tests__/**/*.js.map": true
+        "**/__tests__/**/*.js.map": true,
+        ".husky": true
     }
 }
