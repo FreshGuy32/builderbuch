@@ -74,3 +74,5 @@ packages/**/__tests__/**/*.d.ts
 !/packages/cli/bin/*
 !commitlint.config.js
 packages/**/dist
+
+.husky

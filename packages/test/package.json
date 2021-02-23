@@ -23,8 +23,8 @@
     },
     "scripts": {
         "transpile-extensions": "tsc extension.ts --esModuleInterop",
-        "start": "yarn transpile-extensions && bb-start",
-        "build": "yarn transpile-extensions && bb-build"
+        "bb-start": "yarn transpile-extensions && bb-start",
+        "bb-build": "yarn transpile-extensions && bb-build"
     },
     "bugs": {
         "url": "https://github.com/FreshGuy32/builderbuch/issues"
