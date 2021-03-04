@@ -15,7 +15,10 @@ export const createConfig = async ({
         args.environment
 
     const config: Configuration = {
-        devtool: 'eval-source-map',
+        devtool:
+            args.mode === 'production'
+                ? 'hidden-source-map'
+                : 'eval-source-map',
         entry: resolve(args.basePath, entry),
         output: {
             filename: outputName,
