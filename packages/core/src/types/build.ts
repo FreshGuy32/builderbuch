@@ -2,6 +2,7 @@ import * as webpack from 'webpack'
 import {
     ExtensionOptimization,
     ExtensionPlugins,
+    ExtensionResolve,
     ExtensionRules,
 } from './extendability'
 import { ConfigFiles } from './configFiles'
@@ -30,6 +31,7 @@ export interface BuildParameters {
     extensionPlugins: ExtensionPlugins
     extensionRules: ExtensionRules
     extensionOptimization: ExtensionOptimization
+    extensionResolve: ExtensionResolve
 
     configFiles: ConfigFiles
 }

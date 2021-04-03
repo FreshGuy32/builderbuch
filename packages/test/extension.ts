@@ -1,10 +1,11 @@
 import {
     ExtensionOptimization,
     ExtensionPlugins,
+    ExtensionResolve,
 } from '@builderbuch/cli/src/extendability'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { resolve } from 'path'
+import * as path from 'path'
 
 export const plugins: ExtensionPlugins = ({ basePath }) => [
     {
@@ -13,9 +14,13 @@ export const plugins: ExtensionPlugins = ({ basePath }) => [
         name: 'HtmlWebpackPlugin',
         value: new HtmlWebpackPlugin({
             title: 'Integration Test',
-            template: resolve(basePath, 'template.html'),
+            template: path.resolve(basePath, 'template.html'),
         }),
     },
 ]
+
+export const resolve: ExtensionResolve = () => ({
+    extensions: ['.tsx', '.ts', '.js', '.css', '.pcss'],
+})
 
 // export const optimization: ExtensionOptimization = () => ({})

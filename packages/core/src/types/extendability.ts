@@ -1,4 +1,4 @@
-import { Options, Plugin, RuleSetRule } from 'webpack'
+import { Options, Plugin, RuleSetRule, Resolve } from 'webpack'
 import { BuildParameters } from './build'
 
 export type ExtensionType = 'plugins' | 'rules'
@@ -42,8 +42,11 @@ export type ExtensionOptimization = ExtensionFn<Options.Optimization>
 export type ExtensionValues = ExtensionPluginValues | ExtensionRuleValues
 export type ExtensionFunctions = ExtensionPlugins | ExtensionRules
 
+export type ExtensionResolve = ExtensionFn<Resolve>
+
 export interface ExtensionModule {
     plugins?: ExtensionPlugins
     rules?: ExtensionRules
     optimization?: ExtensionOptimization
+    resolve?: ExtensionResolve
 }

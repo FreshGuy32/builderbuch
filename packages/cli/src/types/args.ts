@@ -7,6 +7,7 @@ export interface Arguments
         | 'extensionPlugins'
         | 'extensionRules'
         | 'extensionOptimization'
+        | 'extensionResolve'
         | 'configFiles'
     > {
     extension: string
