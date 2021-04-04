@@ -15,7 +15,7 @@ export const plugins: ExtensionPlugins = ({ basePath }) => [
         value: new HtmlWebpackPlugin({
             title: 'Integration Test',
             template: path.resolve(basePath, 'template.html'),
-        }),
+        }) as any,
     },
 ]
 
