@@ -13,12 +13,17 @@ export type BuildMode = Exclude<
     webpack.Configuration['mode'],
     'none' | undefined
 >
-export type BuildEnvironment = BuildMode | 'staging'
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface BuildEnvironments {}
+export type BuildEnvironment = keyof BuildEnvironments extends never
+    ? string
+    : keyof BuildEnvironments
 
 export interface BuildParameters {
     type: BuildType
     mode: BuildMode
-    environment: BuildEnvironment
+    environment: BuildEnvironment | undefined
 
     entry: string
     output: string

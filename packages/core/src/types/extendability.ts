@@ -1,5 +1,5 @@
 import { Options, Plugin, RuleSetRule, Resolve } from 'webpack'
-import { BuildParameters } from './build'
+import { BuildEnvironment, BuildParameters } from './build'
 
 export type ExtensionType = 'plugins' | 'rules'
 
@@ -49,4 +49,5 @@ export interface ExtensionModule {
     rules?: ExtensionRules
     optimization?: ExtensionOptimization
     resolve?: ExtensionResolve
+    allowedEnvironments?: BuildEnvironment[]
 }
