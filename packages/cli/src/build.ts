@@ -16,6 +16,19 @@ import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
     const extension = await loadExtensions(
         resolve(argv.basePath, argv.extension)
     )
+    if (
+        extension?.allowedEnvironments &&
+        argv.environment &&
+        !extension.allowedEnvironments.includes(argv.environment)
+    ) {
+        throw new Error(
+            `Environment '${
+                argv.environment
+            }' doesn't exist in allowed environments '${JSON.stringify(
+                extension.allowedEnvironments
+            )}'.`
+        )
+    }
 
     const fallback = () => []
     const compiler = await createCompiler({

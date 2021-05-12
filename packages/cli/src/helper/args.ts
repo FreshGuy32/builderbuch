@@ -36,8 +36,7 @@ const args = yargs.options({
 
     environment: {
         type: 'string',
-        choices: ['production', 'staging', 'development'] as BuildEnvironment[],
-        default: 'staging' as BuildEnvironment,
+        default: undefined as undefined | BuildEnvironment,
         description:
             'Environment for Browserlist and also gets exposed via Webpack into the build.',
     },
