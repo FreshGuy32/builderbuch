@@ -3,6 +3,7 @@ import {
     ExtensionPlugins,
     ExtensionResolve,
 } from '@builderbuch/cli/src/extendability'
+import { BuildEnvironment } from '@builderbuch/core/src/types/build'
 
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import * as path from 'path'
@@ -24,3 +25,9 @@ export const resolve: ExtensionResolve = () => ({
 })
 
 // export const optimization: ExtensionOptimization = () => ({})
+
+export const allowedEnvironments: BuildEnvironment[] = [
+    'production',
+    'staging',
+    'development',
+]
