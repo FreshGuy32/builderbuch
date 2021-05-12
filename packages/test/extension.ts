@@ -1,5 +1,4 @@
 import {
-    ExtensionOptimization,
     ExtensionPlugins,
     ExtensionResolve,
 } from '@builderbuch/cli/src/extendability'
