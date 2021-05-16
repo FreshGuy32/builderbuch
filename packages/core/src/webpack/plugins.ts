@@ -1,5 +1,5 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import { Plugin, EnvironmentPlugin } from 'webpack'
+import { EnvironmentPlugin } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import {
     ExtensionPluginAdditon,
@@ -7,6 +7,7 @@ import {
 } from '../types/extendability'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { BuildParameters } from '../types/build'
+import { Plugin } from '../types/plugin'
 
 export const plugins = ({
     type,
@@ -33,7 +34,7 @@ export const plugins = ({
         environment: environment,
     })
 
-    const forkTsCheckerPlugin = (new ForkTsCheckerWebpackPlugin({
+    const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
         typescript: {
             configFile: configFiles.ts[0].path,
         },
@@ -44,7 +45,7 @@ export const plugins = ({
                 configFile: configFiles.eslint[0].path,
             },
         },
-    }) as unknown) as Plugin
+    }) as Plugin
 
     const additions = additionalPlugins
         .filter(
@@ -69,8 +70,7 @@ export const plugins = ({
     )
     if (type === 'start') {
         plugins.push(
-            htmlWebpackPlugin?.value ??
-                ((new HtmlWebpackPlugin() as unknown) as Plugin)
+            htmlWebpackPlugin?.value ?? (new HtmlWebpackPlugin() as Plugin)
         )
     }
     if (type === 'build' && htmlWebpackPlugin) {
