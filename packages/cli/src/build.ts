@@ -1,4 +1,4 @@
-import clearConsole from 'react-dev-utils/clearConsole'
+// import clearConsole from 'react-dev-utils/clearConsole'
 import { argv } from './helper/args'
 import { onSigint } from './helper/onSigint'
 import { loadExtensions } from './helper/loadExtensions'
@@ -48,7 +48,7 @@ import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
                     return console.log(er)
                 }
                 if (process.stdout.isTTY) {
-                    clearConsole()
+                    // clearConsole()
                 }
             })
 
