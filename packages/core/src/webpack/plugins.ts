@@ -31,7 +31,7 @@ export const plugins = ({
 
     const environmentPlugin = new EnvironmentPlugin({
         mode: mode,
-        environment: environment,
+        environment: environment ?? 'default',
     })
 
     const forkTsCheckerPlugin = new ForkTsCheckerWebpackPlugin({
