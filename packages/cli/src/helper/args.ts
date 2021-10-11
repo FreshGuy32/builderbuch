@@ -64,4 +64,5 @@ const args = yargs.options({
 
     watch: { type: 'boolean', default: false, alias: 'w' },
 })
-export const argv: Readonly<Arguments> = args.argv
+export const argv: Readonly<Arguments> | Promise<Readonly<Arguments>> =
+    args.argv

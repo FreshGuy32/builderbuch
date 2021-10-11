@@ -10,17 +10,18 @@ import { validateFoundConfigs } from './helper/validateFoundConfigs'
 import { defaultOptimization } from '@builderbuch/core/src/webpack/optimization'
 import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
 ;(async () => {
+    const args = await argv
     const configFiles = validateFoundConfigs(
-        await checkIfConfigFilesExist(argv.basePath)
+        await checkIfConfigFilesExist(args.basePath)
     )
 
     const extension = await loadExtensions(
-        resolve(argv.basePath, argv.extension)
+        resolve(args.basePath, args.extension)
     )
 
     const fallback = () => []
     const compiler = await createCompiler({
-        ...argv,
+        ...args,
         type: 'start',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,

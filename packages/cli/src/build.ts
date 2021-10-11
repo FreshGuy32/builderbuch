@@ -9,21 +9,22 @@ import { checkIfConfigFilesExist } from './helper/checkIfConfigFilesExist'
 import { defaultOptimization } from '@builderbuch/core/src/webpack/optimization'
 import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
 ;(async () => {
+    const args = await argv
     const configFiles = validateFoundConfigs(
-        await checkIfConfigFilesExist(argv.basePath)
+        await checkIfConfigFilesExist(args.basePath)
     )
 
     const extension = await loadExtensions(
-        resolve(argv.basePath, argv.extension)
+        resolve(args.basePath, args.extension)
     )
     if (
         extension?.allowedEnvironments &&
-        argv.environment &&
-        !extension.allowedEnvironments.includes(argv.environment)
+        args.environment &&
+        !extension.allowedEnvironments.includes(args.environment)
     ) {
         throw new Error(
             `Environment '${
-                argv.environment
+                args.environment
             }' doesn't exist in allowed environments '${JSON.stringify(
                 extension.allowedEnvironments
             )}'.`
@@ -32,7 +33,7 @@ import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
 
     const fallback = () => []
     const compiler = await createCompiler({
-        ...argv,
+        ...args,
         type: 'build',
         extensionPlugins: extension?.plugins ?? fallback,
         extensionRules: extension?.rules ?? fallback,
@@ -42,7 +43,7 @@ import { defaultResolve } from '@builderbuch/core/src/webpack/defaultResolve'
     })
 
     return new Promise(resolve => {
-        if (argv.watch) {
+        if (args.watch) {
             const watcher = compiler.watch({}, er => {
                 if (er) {
                     return console.log(er)
