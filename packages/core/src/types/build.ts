@@ -18,7 +18,7 @@ export type BuildMode = Exclude<
 interface BuildEnvironments {}
 export type BuildEnvironment = keyof BuildEnvironments extends never
     ? string
-    : keyof BuildEnvironments
+    : keyof BuildEnvironments | 'default'
 
 export interface BuildParameters {
     type: BuildType
