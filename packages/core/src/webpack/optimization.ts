@@ -1,9 +1,8 @@
 import { ExtensionOptimization } from '../types/extendability'
 
-export const defaultOptimization: ExtensionOptimization = ({ mode }) => ({
+export const defaultOptimization: ExtensionOptimization = () => ({
     splitChunks: {
         chunks: 'all',
-        name: mode === 'development',
     },
     runtimeChunk: {
         name: 'runtime',

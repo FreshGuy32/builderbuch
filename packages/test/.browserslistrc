@@ -1,11 +1,11 @@
-[prod]
+[production]
 > 0.5%
 last 2 versions
 Firefox ESR
 not dead
 
-[stg]
+[staging]
 last 2 Chrome versions
 
-[dev]
+[development]
 last 2 Chrome versions
