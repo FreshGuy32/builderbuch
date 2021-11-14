@@ -42,7 +42,7 @@ export const plugins = ({
             enabled: true,
             files: 'src/**/*',
             options: {
-                configFile: configFiles.eslint[0].path,
+                overrideConfigFile: configFiles.eslint[0].path,
             },
         },
     }) as Plugin
@@ -81,7 +81,7 @@ export const plugins = ({
         plugins.push(
             new BundleAnalyzerPlugin({
                 analyzerMode: 'static',
-            }) //as Plugin
+            }) as Plugin
         )
     }
 
