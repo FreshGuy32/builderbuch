@@ -1,6 +1,6 @@
 {
     "name": "@builderbuch/test",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "> TODO: description",
     "author": "FreshGuy32 <mathias.trapl@gmail.com>",
     "homepage": "https://github.com/FreshGuy32/builderbuch#readme",
@@ -32,7 +32,7 @@
     "dependencies": {
         "@babel/core": "7.16.0",
         "@babel/preset-typescript": "7.16.0",
-        "@builderbuch/cli": "^2.0.0",
+        "@builderbuch/cli": "^2.1.0",
         "react": "17.0.2",
         "react-dom": "17.0.2"
     },

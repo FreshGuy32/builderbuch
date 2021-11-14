@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/FreshGuy32/builderbuch/compare/v2.0.0...v2.1.0) (2021-11-14)
+
+### Features
+
+-   **core:** changed configFile to overrideConfigFile for eslint 8 ([9b3be19](https://github.com/FreshGuy32/builderbuch/commit/9b3be199cfbb14bf3fb6a7cfd55f30d61813c69d))
+
 # [2.0.0](https://github.com/FreshGuy32/builderbuch/compare/v1.3.1...v2.0.0) (2021-10-11)
 
 ### Bug Fixes

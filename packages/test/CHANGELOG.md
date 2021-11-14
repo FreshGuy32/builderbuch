@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/FreshGuy32/builderbuch/compare/v2.0.0...v2.1.0) (2021-11-14)
+
+**Note:** Version bump only for package @builderbuch/test
+
 # [2.0.0](https://github.com/FreshGuy32/builderbuch/compare/v1.3.1...v2.0.0) (2021-10-11)
 
 ### Bug Fixes
